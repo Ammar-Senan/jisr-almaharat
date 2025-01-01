@@ -1,17 +1,28 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:{organization_name}",
  "creation": "2024-12-29 00:15:34.315754",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "section_break_evag",
-  "amended_from"
+  "amended_from",
+  "logo",
+  "organization_name",
+  "about_organization",
+  "email",
+  "phone",
+  "industry",
+  "location",
+  "set_location",
+  "registration_date"
  ],
  "fields": [
   {
    "fieldname": "section_break_evag",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Organiztion Information"
   },
   {
    "fieldname": "amended_from",
@@ -22,15 +33,73 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "logo",
+   "fieldtype": "Attach Image",
+   "label": "Logo"
+  },
+  {
+   "fieldname": "organization_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Organization Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "about_organization",
+   "fieldtype": "Text",
+   "in_list_view": 1,
+   "label": "About Organization",
+   "reqd": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Email",
+   "reqd": 1
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Phone",
+   "in_list_view": 1,
+   "label": "Phone",
+   "reqd": 1
+  },
+  {
+   "fieldname": "industry",
+   "fieldtype": "Select",
+   "label": "Industry",
+   "options": "Technology\nEducational\nMedical\nMechanic\nArchitectural\nAgricultural",
+   "reqd": 1
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location"
+  },
+  {
+   "fieldname": "set_location",
+   "fieldtype": "Geolocation",
+   "label": "Set Location"
+  },
+  {
+   "fieldname": "registration_date",
+   "fieldtype": "Date",
+   "label": "Registration date"
   }
  ],
+ "image_field": "logo",
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-29 00:15:34.315754",
+ "modified": "2025-01-01 16:53:40.515140",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Organization",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
@@ -49,5 +118,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }
