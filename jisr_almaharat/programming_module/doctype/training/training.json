@@ -5,17 +5,57 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "section_break_j99n"
+  "training_title",
+  "jop_applicant",
+  "training_pattren",
+  "location",
+  "description_of_training",
+  "training_statu",
+  "training_post_date"
  ],
  "fields": [
   {
-   "fieldname": "section_break_j99n",
-   "fieldtype": "Section Break"
+   "fieldname": "training_title",
+   "fieldtype": "Data",
+   "label": "Training Title"
+  },
+  {
+   "fieldname": "jop_applicant",
+   "fieldtype": "Link",
+   "label": "Jop Applicant",
+   "options": "User1"
+  },
+  {
+   "fieldname": "training_pattren",
+   "fieldtype": "Select",
+   "label": "Training Pattren",
+   "options": "Field\nOnline"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location"
+  },
+  {
+   "fieldname": "description_of_training",
+   "fieldtype": "Text",
+   "label": "Description of Training"
+  },
+  {
+   "fieldname": "training_statu",
+   "fieldtype": "Select",
+   "label": "Training Statu",
+   "options": "Available\nClose"
+  },
+  {
+   "fieldname": "training_post_date",
+   "fieldtype": "Date",
+   "label": "Training Post Date"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-12-29 00:16:26.958611",
+ "modified": "2024-12-31 23:16:43.675607",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Training",

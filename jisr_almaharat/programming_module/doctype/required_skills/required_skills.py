@@ -1,13 +1,9 @@
-# Copyright (c) 2024, admin and contributors
+# Copyright (c) 2025, admin and contributors
 # For license information, please see license.txt
 
-import frappe
+# import frappe
 from frappe.model.document import Document
 
 
-class Organization(Document):
+class RequiredSkills(Document):
 	pass
-	
-
-	
-
