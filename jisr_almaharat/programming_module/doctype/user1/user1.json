@@ -17,7 +17,7 @@
   {
    "fieldname": "name1",
    "fieldtype": "Data",
-   "label": "Name",
+   "label": "Namee",
    "reqd": 1
   },
   {
@@ -53,7 +53,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-01-02 00:16:34.214304",
+ "modified": "2025-01-02 21:16:09.643579",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "User1",
