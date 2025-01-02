@@ -41,6 +41,7 @@
    "fieldname": "logo",
    "fieldtype": "Attach Image",
    "label": "Logo",
+   "make_attachment_public": 1,
    "reqd": 1
   },
   {
@@ -94,7 +95,8 @@
   {
    "fieldname": "registration_date",
    "fieldtype": "Date",
-   "label": "Registration date"
+   "label": "Registration date",
+   "reqd": 1
   },
   {
    "fieldname": "section_break_xrdy",
@@ -115,7 +117,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-01-01 23:12:06.922500",
+ "modified": "2025-01-02 23:00:54.083015",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Organization",
