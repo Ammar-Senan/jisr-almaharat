@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "Pre-.#####",
+ "autoname": "JOP-ID-.#####",
  "creation": "2024-12-29 00:16:06.045571",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -136,14 +136,14 @@
   {
    "fetch_from": "company_name.logo",
    "fieldname": "company_logo",
-   "fieldtype": "Image",
+   "fieldtype": "Attach Image",
    "label": "Company Logo",
    "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-01-01 23:17:31.967331",
+ "modified": "2025-01-02 21:58:50.156221",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Job",

@@ -1,64 +1,126 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "Training-ID-.#####",
  "creation": "2024-12-29 00:16:26.958611",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "training_title",
-  "jop_applicant",
-  "training_pattren",
+  "company_name",
   "location",
-  "description_of_training",
-  "training_statu",
-  "training_post_date"
+  "training_pattren",
+  "column_break_swie",
+  "training_status",
+  "training_post_date",
+  "aplication_deadline",
+  "url",
+  "description_of_training_section",
+  "about_training",
+  "section_break_quwf",
+  "attach_image_oqbv",
+  "list_of_required_section",
+  "training_required"
  ],
  "fields": [
   {
    "fieldname": "training_title",
    "fieldtype": "Data",
-   "label": "Training Title"
-  },
-  {
-   "fieldname": "jop_applicant",
-   "fieldtype": "Link",
-   "label": "Jop Applicant",
-   "options": "User1"
+   "label": "Training Title",
+   "reqd": 1
   },
   {
    "fieldname": "training_pattren",
    "fieldtype": "Select",
    "label": "Training Pattren",
-   "options": "Field\nOnline"
+   "options": "Field\nOnline",
+   "reqd": 1
   },
   {
+   "fieldname": "training_post_date",
+   "fieldtype": "Date",
+   "label": "Training Post Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_swie",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "description_of_training_section",
+   "fieldtype": "Section Break",
+   "label": "Description of Training"
+  },
+  {
+   "fieldname": "company_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company Name",
+   "options": "Organization",
+   "reqd": 1
+  },
+  {
+   "fieldname": "url",
+   "fieldtype": "Data",
+   "label": "URL To Applay"
+  },
+  {
+   "fetch_from": "company_name.location",
    "fieldname": "location",
    "fieldtype": "Data",
    "label": "Location"
   },
   {
-   "fieldname": "description_of_training",
-   "fieldtype": "Text",
-   "label": "Description of Training"
-  },
-  {
-   "fieldname": "training_statu",
+   "fieldname": "training_status",
    "fieldtype": "Select",
-   "label": "Training Statu",
-   "options": "Available\nClose"
+   "label": "Training Status",
+   "options": "Available\nClose",
+   "reqd": 1
   },
   {
-   "fieldname": "training_post_date",
+   "fieldname": "aplication_deadline",
    "fieldtype": "Date",
-   "label": "Training Post Date"
+   "label": "Aplication Deadline",
+   "reqd": 1
+  },
+  {
+   "fieldname": "list_of_required_section",
+   "fieldtype": "Section Break",
+   "label": "List Of Required"
+  },
+  {
+   "fieldname": "training_required",
+   "fieldtype": "Table",
+   "label": "Training Required",
+   "options": "Traning Required",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_quwf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "company_name.logo",
+   "fieldname": "attach_image_oqbv",
+   "fieldtype": "Attach Image",
+   "label": "Compiny Logo",
+   "read_only": 1
+  },
+  {
+   "fieldname": "about_training",
+   "fieldtype": "Text",
+   "label": "About Training",
+   "placeholder": "Whrit Here all Descrption For Training",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-12-31 23:16:43.675607",
+ "modified": "2025-01-02 23:06:03.690057",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Training",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {
