@@ -8,15 +8,18 @@
  "field_order": [
   "section_break_evag",
   "amended_from",
-  "logo",
   "organization_name",
-  "about_organization",
   "email",
   "phone",
+  "column_break_bqcd",
   "industry",
+  "registration_date",
+  "logo",
+  "section_break_xrdy",
+  "about_organization",
+  "locations_info_section",
   "location",
-  "set_location",
-  "registration_date"
+  "set_location"
  ],
  "fields": [
   {
@@ -37,7 +40,8 @@
   {
    "fieldname": "logo",
    "fieldtype": "Attach Image",
-   "label": "Logo"
+   "label": "Logo",
+   "reqd": 1
   },
   {
    "fieldname": "organization_name",
@@ -52,6 +56,7 @@
    "fieldtype": "Text",
    "in_list_view": 1,
    "label": "About Organization",
+   "placeholder": "Whrit Here About Organization",
    "reqd": 1
   },
   {
@@ -62,6 +67,7 @@
    "reqd": 1
   },
   {
+   "bold": 1,
    "fieldname": "phone",
    "fieldtype": "Phone",
    "in_list_view": 1,
@@ -89,13 +95,27 @@
    "fieldname": "registration_date",
    "fieldtype": "Date",
    "label": "Registration date"
+  },
+  {
+   "fieldname": "section_break_xrdy",
+   "fieldtype": "Section Break",
+   "label": "Organization"
+  },
+  {
+   "fieldname": "column_break_bqcd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "locations_info_section",
+   "fieldtype": "Section Break",
+   "label": "Locations Info"
   }
  ],
  "image_field": "logo",
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-01-01 16:53:40.515140",
+ "modified": "2025-01-01 23:12:06.922500",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Organization",
