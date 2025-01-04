@@ -6,51 +6,28 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "jop_informtion_section",
-  "jop_reference_id",
+  "organization_informtation",
+  "organization_name",
+  "column_break_otgk",
+  "organization_email",
+  "job_information",
   "jop_title",
-  "company_name",
-  "salary_range",
-  "education_level",
   "posting_date",
   "aplication_deadline",
-  "contact_email",
+  "jop_description",
   "column_break_krqq",
   "jop_location",
   "jop_type",
-  "jop_description",
-  "url_to_applay",
+  "salary_range",
   "list_of_required_section",
-  "required_skills",
-  "company_logo"
+  "required_skills"
  ],
  "fields": [
-  {
-   "fieldname": "jop_informtion_section",
-   "fieldtype": "Section Break",
-   "label": "JOP INFORMTION"
-  },
   {
    "fieldname": "jop_title",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Jop Title",
-   "reqd": 1
-  },
-  {
-   "fieldname": "jop_reference_id",
-   "fieldtype": "Data",
-   "in_filter": 1,
-   "in_standard_filter": 1,
-   "is_virtual": 1,
-   "label": "Jop Reference ID"
-  },
-  {
-   "description": "Name the Company Offered For the Jop",
-   "fieldname": "company_name",
-   "fieldtype": "Link",
-   "label": "Company Name",
-   "options": "Organization",
    "reqd": 1
   },
   {
@@ -73,16 +50,6 @@
    "fieldname": "salary_range",
    "fieldtype": "Currency",
    "label": "Salary Range"
-  },
-  {
-   "fieldname": "education_level",
-   "fieldtype": "Select",
-   "in_filter": 1,
-   "in_standard_filter": 1,
-   "label": "Education Level",
-   "options": "High School\nMaster`s Degree\nBachelor`s Degree\nPhD",
-   "reqd": 1,
-   "sort_options": 1
   },
   {
    "fieldname": "column_break_krqq",
@@ -111,12 +78,6 @@
    "reqd": 1
   },
   {
-   "fieldname": "contact_email",
-   "fieldtype": "Data",
-   "label": "Contact Email",
-   "reqd": 1
-  },
-  {
    "fieldname": "list_of_required_section",
    "fieldtype": "Section Break",
    "label": "List Of Required"
@@ -129,21 +90,36 @@
    "reqd": 1
   },
   {
-   "fieldname": "url_to_applay",
-   "fieldtype": "Data",
-   "label": "URL To Applay"
+   "fieldname": "organization_informtation",
+   "fieldtype": "Section Break",
+   "label": "Organization Informtation"
   },
   {
-   "fetch_from": "company_name.logo",
-   "fieldname": "company_logo",
-   "fieldtype": "Attach Image",
-   "label": "Company Logo",
-   "read_only": 1
+   "fieldname": "column_break_otgk",
+   "fieldtype": "Column Break",
+   "options": "Organization"
+  },
+  {
+   "fieldname": "job_information",
+   "fieldtype": "Section Break",
+   "label": "Job Information"
+  },
+  {
+   "fieldname": "organization_name",
+   "fieldtype": "Data",
+   "label": "Organization Name",
+   "options": "Organization",
+   "reqd": 1
+  },
+  {
+   "fieldname": "organization_email",
+   "fieldtype": "Data",
+   "label": "Organization Email"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-01-02 21:58:50.156221",
+ "modified": "2025-01-04 17:26:24.325386",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Job",
