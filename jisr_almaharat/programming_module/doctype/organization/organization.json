@@ -10,6 +10,7 @@
   "amended_from",
   "organization_name",
   "email",
+  "website",
   "phone",
   "column_break_bqcd",
   "industry",
@@ -111,13 +112,19 @@
    "fieldname": "locations_info_section",
    "fieldtype": "Section Break",
    "label": "Locations Info"
+  },
+  {
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website",
+   "reqd": 1
   }
  ],
  "image_field": "logo",
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-01-02 23:00:54.083015",
+ "modified": "2025-01-05 01:48:10.144991",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Organization",

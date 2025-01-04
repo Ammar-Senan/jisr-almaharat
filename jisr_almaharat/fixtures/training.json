@@ -1,0 +1,37 @@
+[
+ {
+  "about_training": "Training to build web site",
+  "aplication_deadline": "2025-01-21",
+  "docstatus": 0,
+  "doctype": "Training",
+  "location": "Company builing",
+  "modified": "2025-01-05 02:06:28.317556",
+  "name": "Training-ID-00001",
+  "organization_email": "info@prositeyemen.com",
+  "organization_name": "Prosite",
+  "training_pattren": "Field",
+  "training_post_date": "2025-01-05",
+  "training_required": [
+   {
+    "list_of_required": "html",
+    "parent": "Training-ID-00001",
+    "parentfield": "training_required",
+    "parenttype": "Training"
+   },
+   {
+    "list_of_required": "Css",
+    "parent": "Training-ID-00001",
+    "parentfield": "training_required",
+    "parenttype": "Training"
+   },
+   {
+    "list_of_required": "JS",
+    "parent": "Training-ID-00001",
+    "parentfield": "training_required",
+    "parenttype": "Training"
+   }
+  ],
+  "training_status": "Available",
+  "training_title": "Web "
+ }
+]

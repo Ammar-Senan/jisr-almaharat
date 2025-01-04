@@ -1,0 +1,32 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Traning Required",
+  "list_of_required": "html",
+  "modified": "2025-01-05 02:06:28.317556",
+  "name": "f5h61otlr3",
+  "parent": "Training-ID-00001",
+  "parentfield": "training_required",
+  "parenttype": "Training"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Traning Required",
+  "list_of_required": "Css",
+  "modified": "2025-01-05 02:06:28.317556",
+  "name": "lq6fivmmol",
+  "parent": "Training-ID-00001",
+  "parentfield": "training_required",
+  "parenttype": "Training"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Traning Required",
+  "list_of_required": "JS",
+  "modified": "2025-01-05 02:06:28.317556",
+  "name": "dd2nunt9ug",
+  "parent": "Training-ID-00001",
+  "parentfield": "training_required",
+  "parenttype": "Training"
+ }
+]
