@@ -8,6 +8,7 @@
  "field_order": [
   "organization_information_section",
   "organization_name",
+  "testing",
   "column_break_bdsd",
   "organization_email",
   "training_information_section",
@@ -100,7 +101,7 @@
    "label": "Organization Information"
   },
   {
-   "fetch_from": "company_name.email",
+   "fetch_from": "organization_name.email",
    "fieldname": "organization_email",
    "fieldtype": "Data",
    "label": "Organization Email",
@@ -114,18 +115,23 @@
   {
    "fetch_from": "company_name.organization_name",
    "fieldname": "organization_name",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "label": "Organization Name",
    "options": "Organization"
   },
   {
    "fieldname": "column_break_bdsd",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "testing",
+   "fieldtype": "Data",
+   "label": "testing"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-01-04 17:34:26.559752",
+ "modified": "2025-01-05 02:31:40.426713",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Training",
@@ -145,7 +151,10 @@
    "write": 1
   }
  ],
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "training_title",
+ "translated_doctype": 1
 }

@@ -105,21 +105,22 @@
    "label": "Job Information"
   },
   {
-   "fieldname": "organization_name",
-   "fieldtype": "Data",
-   "label": "Organization Name",
-   "options": "Organization",
-   "reqd": 1
-  },
-  {
+   "fetch_from": "organization_name.email",
    "fieldname": "organization_email",
    "fieldtype": "Data",
    "label": "Organization Email"
+  },
+  {
+   "fieldname": "organization_name",
+   "fieldtype": "Link",
+   "label": "Organization Name",
+   "options": "Organization",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-01-04 17:26:24.325386",
+ "modified": "2025-01-05 02:11:56.487224",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Job",
@@ -139,7 +140,10 @@
    "write": 1
   }
  ],
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "jop_title",
+ "translated_doctype": 1
 }
