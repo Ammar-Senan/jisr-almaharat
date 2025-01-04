@@ -6,19 +6,20 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "organization_information_section",
+  "organization_name",
+  "column_break_bdsd",
+  "organization_email",
+  "training_information_section",
   "training_title",
-  "company_name",
-  "location",
   "training_pattren",
-  "column_break_swie",
-  "training_status",
   "training_post_date",
+  "column_break_swie",
+  "location",
+  "training_status",
   "aplication_deadline",
-  "url",
   "description_of_training_section",
   "about_training",
-  "section_break_quwf",
-  "attach_image_oqbv",
   "list_of_required_section",
   "training_required"
  ],
@@ -26,12 +27,14 @@
   {
    "fieldname": "training_title",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Training Title",
    "reqd": 1
   },
   {
    "fieldname": "training_pattren",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Training Pattren",
    "options": "Field\nOnline",
    "reqd": 1
@@ -39,6 +42,7 @@
   {
    "fieldname": "training_post_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Training Post Date",
    "reqd": 1
   },
@@ -52,19 +56,6 @@
    "label": "Description of Training"
   },
   {
-   "fieldname": "company_name",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Company Name",
-   "options": "Organization",
-   "reqd": 1
-  },
-  {
-   "fieldname": "url",
-   "fieldtype": "Data",
-   "label": "URL To Applay"
-  },
-  {
    "fetch_from": "company_name.location",
    "fieldname": "location",
    "fieldtype": "Data",
@@ -73,6 +64,7 @@
   {
    "fieldname": "training_status",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Training Status",
    "options": "Available\nClose",
    "reqd": 1
@@ -96,27 +88,44 @@
    "reqd": 1
   },
   {
-   "fieldname": "section_break_quwf",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fetch_from": "company_name.logo",
-   "fieldname": "attach_image_oqbv",
-   "fieldtype": "Attach Image",
-   "label": "Compiny Logo",
-   "read_only": 1
-  },
-  {
    "fieldname": "about_training",
    "fieldtype": "Text",
    "label": "About Training",
    "placeholder": "Whrit Here all Descrption For Training",
    "reqd": 1
+  },
+  {
+   "fieldname": "organization_information_section",
+   "fieldtype": "Section Break",
+   "label": "Organization Information"
+  },
+  {
+   "fetch_from": "company_name.email",
+   "fieldname": "organization_email",
+   "fieldtype": "Data",
+   "label": "Organization Email",
+   "options": "Organization"
+  },
+  {
+   "fieldname": "training_information_section",
+   "fieldtype": "Section Break",
+   "label": "Training Information"
+  },
+  {
+   "fetch_from": "company_name.organization_name",
+   "fieldname": "organization_name",
+   "fieldtype": "Data",
+   "label": "Organization Name",
+   "options": "Organization"
+  },
+  {
+   "fieldname": "column_break_bdsd",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-01-02 23:06:03.690057",
+ "modified": "2025-01-04 17:34:26.559752",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Training",
