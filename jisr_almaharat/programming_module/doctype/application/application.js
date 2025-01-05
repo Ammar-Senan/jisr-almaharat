@@ -5,7 +5,8 @@ frappe.ui.form.on("Application", {
 	// refresh(frm) {
 
 	// },
-    // to change the link application_name to another doctype
+    
+    // to change the link application_name to another doctype by change the kind value
     kind: function (frm) {
         // Check the value of the "kind" field
         if (frm.doc.kind === 'Training') {
