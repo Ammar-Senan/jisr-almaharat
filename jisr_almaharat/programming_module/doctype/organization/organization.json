@@ -123,8 +123,19 @@
  "image_field": "logo",
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
- "links": [],
- "modified": "2025-01-05 01:48:10.144991",
+ "links": [
+  {
+   "group": "Add Job",
+   "link_doctype": "Job",
+   "link_fieldname": "organization_name"
+  },
+  {
+   "group": "Add Training",
+   "link_doctype": "Training",
+   "link_fieldname": "organization_name"
+  }
+ ],
+ "modified": "2025-01-08 00:21:43.340767",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Organization",

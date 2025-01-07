@@ -8,9 +8,10 @@
  "field_order": [
   "organization_information_section",
   "organization_name",
-  "testing",
+  "organization_site",
   "column_break_bdsd",
   "organization_email",
+  "organization_location",
   "training_information_section",
   "training_title",
   "training_pattren",
@@ -45,6 +46,7 @@
    "fieldtype": "Date",
    "in_list_view": 1,
    "label": "Training Post Date",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -124,14 +126,21 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "testing",
+   "fetch_from": "organization_name.website",
+   "fieldname": "organization_site",
    "fieldtype": "Data",
-   "label": "testing"
+   "label": "Organization Site"
+  },
+  {
+   "fetch_from": "organization_name.location",
+   "fieldname": "organization_location",
+   "fieldtype": "Data",
+   "label": "Organization Location"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-01-05 02:31:40.426713",
+ "modified": "2025-01-08 00:47:59.869374",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Training",
