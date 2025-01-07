@@ -52,8 +52,13 @@
   }
  ],
  "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2025-01-04 16:42:17.191068",
+ "links": [
+  {
+   "link_doctype": "Application",
+   "link_fieldname": "applicant_name"
+  }
+ ],
+ "modified": "2025-01-08 00:28:23.873518",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "User1",

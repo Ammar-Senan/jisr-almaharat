@@ -8,8 +8,10 @@
  "field_order": [
   "organization_information_section",
   "organization_name",
+  "organization_site",
   "column_break_bdsd",
   "organization_email",
+  "organization_location",
   "training_information_section",
   "training_title",
   "training_pattren",
@@ -44,6 +46,7 @@
    "fieldtype": "Date",
    "in_list_view": 1,
    "label": "Training Post Date",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -100,7 +103,7 @@
    "label": "Organization Information"
   },
   {
-   "fetch_from": "company_name.email",
+   "fetch_from": "organization_name.email",
    "fieldname": "organization_email",
    "fieldtype": "Data",
    "label": "Organization Email",
@@ -114,18 +117,30 @@
   {
    "fetch_from": "company_name.organization_name",
    "fieldname": "organization_name",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "label": "Organization Name",
    "options": "Organization"
   },
   {
    "fieldname": "column_break_bdsd",
    "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "organization_name.website",
+   "fieldname": "organization_site",
+   "fieldtype": "Data",
+   "label": "Organization Site"
+  },
+  {
+   "fetch_from": "organization_name.location",
+   "fieldname": "organization_location",
+   "fieldtype": "Data",
+   "label": "Organization Location"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-01-04 17:34:26.559752",
+ "modified": "2025-01-08 00:47:59.869374",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Training",
@@ -145,7 +160,10 @@
    "write": 1
   }
  ],
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "training_title",
+ "translated_doctype": 1
 }

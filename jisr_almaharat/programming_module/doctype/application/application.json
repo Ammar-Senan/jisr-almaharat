@@ -18,6 +18,7 @@
  ],
  "fields": [
   {
+   "fetch_from": "applicant_name.email",
    "fieldname": "email",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -26,7 +27,7 @@
    "reqd": 1
   },
   {
-   "fetch_from": "email.phone_number",
+   "fetch_from": "applicant_name.phone_number",
    "fieldname": "phone",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -43,9 +44,10 @@
   },
   {
    "fieldname": "application_name",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Application_Name",
+   "options": "Job",
    "reqd": 1
   },
   {
@@ -71,14 +73,14 @@
   {
    "fetch_from": "email.name1",
    "fieldname": "applicant_name",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "label": "Applicant Name",
    "options": "User1"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-01-04 17:45:32.315002",
+ "modified": "2025-01-05 02:10:03.779412",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Application",
