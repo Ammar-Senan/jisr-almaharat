@@ -8,16 +8,18 @@
  "field_order": [
   "organization_informtation",
   "organization_name",
+  "organization_site",
   "column_break_otgk",
   "organization_email",
+  "organization_location",
   "job_information",
   "jop_title",
   "posting_date",
-  "aplication_deadline",
+  "jop_type",
   "jop_description",
   "column_break_krqq",
   "jop_location",
-  "jop_type",
+  "aplication_deadline",
   "salary_range",
   "list_of_required_section",
   "required_skills"
@@ -67,6 +69,7 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Posting Date",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -116,11 +119,23 @@
    "label": "Organization Name",
    "options": "Organization",
    "reqd": 1
+  },
+  {
+   "fetch_from": "organization_name.website",
+   "fieldname": "organization_site",
+   "fieldtype": "Data",
+   "label": "Organization Site"
+  },
+  {
+   "fetch_from": "organization_name.location",
+   "fieldname": "organization_location",
+   "fieldtype": "Data",
+   "label": "Organization Location"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-01-05 02:11:56.487224",
+ "modified": "2025-01-08 00:49:11.683965",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Job",
