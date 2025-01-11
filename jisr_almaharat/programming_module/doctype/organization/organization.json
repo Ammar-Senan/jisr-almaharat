@@ -15,6 +15,7 @@
   "column_break_bqcd",
   "industry",
   "registration_date",
+  "password",
   "logo",
   "section_break_xrdy",
   "about_organization",
@@ -42,8 +43,7 @@
    "fieldname": "logo",
    "fieldtype": "Attach Image",
    "label": "Logo",
-   "make_attachment_public": 1,
-   "reqd": 1
+   "make_attachment_public": 1
   },
   {
    "fieldname": "organization_name",
@@ -118,6 +118,11 @@
    "fieldtype": "Data",
    "label": "Website",
    "reqd": 1
+  },
+  {
+   "fieldname": "password",
+   "fieldtype": "Password",
+   "label": "Password"
   }
  ],
  "image_field": "logo",
@@ -135,7 +140,7 @@
    "link_fieldname": "organization_name"
   }
  ],
- "modified": "2025-01-08 00:21:43.340767",
+ "modified": "2025-01-10 19:05:58.897282",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Organization",
@@ -153,6 +158,18 @@
    "role": "System Manager",
    "share": 1,
    "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Organization Role",
+   "share": 1,
    "write": 1
   }
  ],

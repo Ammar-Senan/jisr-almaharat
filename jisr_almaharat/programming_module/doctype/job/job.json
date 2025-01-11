@@ -135,7 +135,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-01-08 00:49:11.683965",
+ "modified": "2025-01-10 19:07:38.972209",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Job",
@@ -153,6 +153,27 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Organization Role",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "User Role",
+   "share": 1
   }
  ],
  "show_title_field_in_link": 1,
@@ -160,5 +181,7 @@
  "sort_order": "DESC",
  "states": [],
  "title_field": "jop_title",
+ "track_changes": 1,
+ "track_seen": 1,
  "translated_doctype": 1
 }

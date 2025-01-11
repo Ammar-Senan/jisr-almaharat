@@ -14,7 +14,8 @@
   "applicant_name",
   "phone",
   "email",
-  "cv"
+  "cv",
+  "amended_from"
  ],
  "fields": [
   {
@@ -76,11 +77,22 @@
    "fieldtype": "Link",
    "label": "Applicant Name",
    "options": "User1"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Application",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2025-01-05 02:10:03.779412",
+ "modified": "2025-01-10 19:05:29.755961",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Application",
@@ -96,6 +108,27 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Organization Role",
+   "share": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "User Role",
    "share": 1,
    "write": 1
   }

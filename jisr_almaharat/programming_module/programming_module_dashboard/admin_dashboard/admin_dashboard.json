@@ -1,0 +1,33 @@
+{
+ "cards": [
+  {
+   "card": "Users"
+  },
+  {
+   "card": "Organization"
+  },
+  {
+   "card": "Job"
+  },
+  {
+   "card": "Training"
+  }
+ ],
+ "charts": [
+  {
+   "width": "Half"
+  }
+ ],
+ "creation": "2025-01-10 20:03:19.202990",
+ "dashboard_name": "Admin Dashboard",
+ "docstatus": 0,
+ "doctype": "Dashboard",
+ "idx": 0,
+ "is_default": 1,
+ "is_standard": 1,
+ "modified": "2025-01-10 20:24:09.528756",
+ "modified_by": "Administrator",
+ "module": "programming module",
+ "name": "Admin Dashboard",
+ "owner": "Administrator"
+}

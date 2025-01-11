@@ -140,7 +140,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-01-08 00:47:59.869374",
+ "modified": "2025-01-10 19:06:32.345393",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Training",
@@ -158,6 +158,27 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Organization Role",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "User Role",
+   "share": 1
   }
  ],
  "show_title_field_in_link": 1,
