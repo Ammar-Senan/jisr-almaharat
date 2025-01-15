@@ -20,5 +20,27 @@
   "parent": "JOP-ID-00001",
   "parentfield": "required_skills",
   "parenttype": "Job"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Required Skills",
+  "experience": 0,
+  "list_of_required": "Good at ERP Next ",
+  "modified": "2025-01-09 23:18:49.405315",
+  "name": "a4b5u0asps",
+  "parent": "JOP-ID-00001",
+  "parentfield": "required_skills",
+  "parenttype": "Job"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Required Skills",
+  "experience": 0,
+  "list_of_required": "Good at Frappe",
+  "modified": "2025-01-09 23:18:49.406271",
+  "name": "2pi9rj5mdl",
+  "parent": "JOP-ID-00001",
+  "parentfield": "required_skills",
+  "parenttype": "Job"
  }
 ]

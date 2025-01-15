@@ -11,7 +11,20 @@ app_license = "mit"
 # required_apps = []
 
 ###################### Start Fixtures for testing #################
-fixtures = ["User1","Organization","Application","Training","Job","Traning Required","Required Skills"]
+fixtures = [
+#add some data
+    "User1","Organization","Application","Training","Job","Traning Required","Required Skills",
+#add role  
+    {"doctype": "Role", "filters": [["name", "in", ["Organization Role", "User Role"]]]},
+    {"doctype": "Custom DocPerm", "filters": [["role", "in", ["Organization Role", "User Role"]]]},
+#add Workflow
+    {"doctype": "Workflow", "filters": [["name", "in", ["Approval Organization", "Approval Application"]]]},
+    {"doctype": "Workflow State"},
+    {"doctype": "Workflow Action Master"}
+
+
+]
+
 #######################        end Fixtures       #################
 
 # Each item in the list will be shown as an app in the apps page

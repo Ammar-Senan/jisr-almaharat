@@ -1,5 +1,6 @@
 [
  {
+  "amended_from": null,
   "applicant_name": "Ammar Senan",
   "application_name": "JOP-ID-00001",
   "cv": "/private/files/CV.txt",
@@ -7,8 +8,23 @@
   "doctype": "Application",
   "email": "amaralazi1000@gmail.com",
   "kind": "Job",
-  "modified": "2025-01-05 02:14:39.461300",
+  "modified": "2025-01-10 18:15:46.366598",
   "name": "EXAMPLE-01-05-00001",
-  "phone": "+967-773984993"
+  "phone": "+967-773984993",
+  "workflow_state": "Rejected"
+ },
+ {
+  "amended_from": null,
+  "applicant_name": "Ammar Senan",
+  "application_name": "JOP-ID-00001",
+  "cv": "/private/files/my_token.txt",
+  "docstatus": 1,
+  "doctype": "Application",
+  "email": "amaralazi1000@gmail.com",
+  "kind": "Job",
+  "modified": "2025-01-11 13:00:56.526205",
+  "name": "EXAMPLE-01-11-00001",
+  "phone": "+967-773984993",
+  "workflow_state": "Approved"
  }
 ]
