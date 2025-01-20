@@ -11,9 +11,7 @@ app_license = "mit"
 # required_apps = []
 
 ###################### Start Fixtures for testing #################
-fixtures = [
-#add some data
-    "User1","Organization","Application","Training","Job","Traning Required","Required Skills",
+fixtures = [ 
 #add role  
     {"doctype": "Role", "filters": [["name", "in", ["Organization Role", "User Role"]]]},
     {"doctype": "Custom DocPerm", "filters": [["role", "in", ["Organization Role", "User Role"]]]},
