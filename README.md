@@ -4,4 +4,4 @@ site for training and employment
 
 #### License
 
-mit
+mit# today
