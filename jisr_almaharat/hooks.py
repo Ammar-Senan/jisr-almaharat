@@ -4,6 +4,7 @@ app_publisher = "admin"
 app_description = "site for training and employment"
 app_email = "amaralazi1000@gmail.com"
 app_license = "mit"
+from jisr_almaharat.route import routes
 
 # Apps
 # ------------------
@@ -78,7 +79,9 @@ fixtures = [
 # role_home_page = {
 # 	"Role": "home_page"
 # }
-
+############## Here line to git file routes
+website_route_rules = routes
+############## Here line to git file routes
 # Generators
 # ----------
 
