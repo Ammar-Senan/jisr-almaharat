@@ -23,8 +23,37 @@ fixtures = [
 
 
 ]
-
 #######################        end Fixtures       #################
+
+
+#######################  Start Custom Login       #################
+# import frappe
+# from frappe.auth import LoginManager
+
+# def custom_login(login_manager):
+#     # الحصول على بيانات المستخدم من نموذج تسجيل الدخول
+#     email = frappe.form_dict.get('email')  # البريد الإلكتروني المدخل
+#     password = frappe.form_dict.get('password')  # كلمة المرور المدخلة
+
+#     # البحث في الـ DocType المخصص (Organization)
+#     organization = frappe.get_all(
+#         "Organization",  # اسم الـ DocType المخصص
+#         filters={"email": email},
+#         fields=["name", "password"]
+#     )
+
+#     if organization and organization[0].password == password:
+#         # إذا تم التحقق من المستخدم، قم بتسجيل الدخول
+#         frappe.local.login_manager.user = organization[0].name
+#         frappe.local.login_manager.post_login()
+#     else:
+#         # إذا فشل التحقق، قم برمي خطأ
+#         frappe.throw("Invalid email or password")
+
+# # ربط الوظيفة بـ "login" hook
+# frappe.login = custom_login
+
+#######################  End Custom Login         #################
 
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [

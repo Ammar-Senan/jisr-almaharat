@@ -62,8 +62,10 @@
   {
    "fieldname": "kind",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Kind",
-   "options": "Job\nTraining"
+   "options": "Job\nTraining",
+   "reqd": 1
   },
   {
    "fieldname": "applicant_information_section",
@@ -91,7 +93,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-01-16 01:46:49.686557",
+ "modified": "2025-01-25 00:51:43.753615",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Application",

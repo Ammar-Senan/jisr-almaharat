@@ -10,6 +10,7 @@
   "amended_from",
   "organization_name",
   "email",
+  "password",
   "website",
   "phone",
   "column_break_bqcd",
@@ -42,7 +43,6 @@
    "fieldname": "logo",
    "fieldtype": "Attach Image",
    "label": "Logo",
-   "make_attachment_public": 1,
    "reqd": 1
   },
   {
@@ -58,7 +58,6 @@
    "fieldtype": "Text",
    "in_list_view": 1,
    "label": "About Organization",
-   "placeholder": "Whrit Here About Organization",
    "reqd": 1
   },
   {
@@ -118,6 +117,11 @@
    "fieldtype": "Data",
    "label": "Website",
    "reqd": 1
+  },
+  {
+   "fieldname": "password",
+   "fieldtype": "Data",
+   "label": "Password"
   }
  ],
  "image_field": "logo",
@@ -135,7 +139,7 @@
    "link_fieldname": "organization_name"
   }
  ],
- "modified": "2025-01-08 00:21:43.340767",
+ "modified": "2025-01-25 21:09:20.969095",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Organization",
