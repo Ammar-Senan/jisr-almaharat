@@ -71,9 +71,7 @@
    "fieldtype": "Date",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Posting Date",
-   "read_only": 1,
-   "reqd": 1
+   "label": "Posting Date"
   },
   {
    "fieldname": "aplication_deadline",
@@ -159,7 +157,7 @@
  "index_web_pages_for_search": 1,
  "is_published_field": "is_published",
  "links": [],
- "modified": "2025-01-25 13:36:56.470996",
+ "modified": "2025-01-26 01:56:44.130615",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Job",
