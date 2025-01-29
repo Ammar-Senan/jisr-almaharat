@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:EXAMPLE-{MM}-{DD}-{#####}",
+ "autoname": "format:{MM}-{DD}-{#####}",
  "creation": "2024-12-29 00:19:12.915141",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -93,7 +93,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-01-25 00:51:43.753615",
+ "modified": "2025-01-27 19:24:39.424228",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Application",
