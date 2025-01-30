@@ -29,89 +29,9 @@
  ],
  "fields": [
   {
-   "fieldname": "jop_title",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Jop Title",
-   "reqd": 1
-  },
-  {
-   "fetch_from": "company_name.location",
-   "fieldname": "jop_location",
-   "fieldtype": "Data",
-   "label": "Jop Location",
-   "reqd": 1
-  },
-  {
-   "fieldname": "jop_type",
-   "fieldtype": "Select",
-   "in_filter": 1,
-   "in_standard_filter": 1,
-   "label": "Jop Type",
-   "options": "Full-time\nPart-time\nFreelance",
-   "reqd": 1
-  },
-  {
-   "fieldname": "salary_range",
-   "fieldtype": "Currency",
-   "label": "Salary Range"
-  },
-  {
-   "fieldname": "column_break_krqq",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "jop_description",
-   "fieldtype": "Text",
-   "label": "Jop Description"
-  },
-  {
-   "fieldname": "posting_date",
-   "fieldtype": "Date",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Posting Date"
-  },
-  {
-   "fieldname": "aplication_deadline",
-   "fieldtype": "Date",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Aplication Deadline",
-   "reqd": 1
-  },
-  {
-   "fieldname": "list_of_required_section",
-   "fieldtype": "Section Break",
-   "label": "List Of Required"
-  },
-  {
-   "fieldname": "required_skills",
-   "fieldtype": "Table",
-   "label": "Required Skills",
-   "options": "Required Item",
-   "reqd": 1
-  },
-  {
    "fieldname": "organization_informtation",
    "fieldtype": "Section Break",
    "label": "Organization Informtation"
-  },
-  {
-   "fieldname": "column_break_otgk",
-   "fieldtype": "Column Break",
-   "options": "Organization"
-  },
-  {
-   "fieldname": "job_information",
-   "fieldtype": "Section Break",
-   "label": "Job Information"
-  },
-  {
-   "fetch_from": "organization_name.email",
-   "fieldname": "organization_email",
-   "fieldtype": "Data",
-   "label": "Organization Email"
   },
   {
    "fieldname": "organization_name",
@@ -127,10 +47,100 @@
    "label": "Organization Site"
   },
   {
+   "fieldname": "column_break_otgk",
+   "fieldtype": "Column Break",
+   "options": "Organization"
+  },
+  {
+   "fetch_from": "organization_name.email",
+   "fieldname": "organization_email",
+   "fieldtype": "Data",
+   "label": "Organization Email"
+  },
+  {
    "fetch_from": "organization_name.location",
    "fieldname": "organization_location",
    "fieldtype": "Data",
    "label": "Organization Location"
+  },
+  {
+   "fieldname": "job_information",
+   "fieldtype": "Section Break",
+   "label": "Job Information"
+  },
+  {
+   "fieldname": "jop_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Jop Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Posting Date",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "jop_type",
+   "fieldtype": "Select",
+   "in_filter": 1,
+   "in_standard_filter": 1,
+   "label": "Jop Type",
+   "options": "Full-time\nPart-time\nFreelance",
+   "reqd": 1
+  },
+  {
+   "fieldname": "jop_description",
+   "fieldtype": "Text",
+   "label": "Jop Description"
+  },
+  {
+   "fieldname": "column_break_krqq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Available",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Available\nClosed"
+  },
+  {
+   "fieldname": "aplication_deadline",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Aplication Deadline",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "company_name.location",
+   "fieldname": "jop_location",
+   "fieldtype": "Data",
+   "label": "Jop Location",
+   "reqd": 1
+  },
+  {
+   "fieldname": "salary_range",
+   "fieldtype": "Currency",
+   "label": "Salary Range"
+  },
+  {
+   "fieldname": "list_of_required_section",
+   "fieldtype": "Section Break",
+   "label": "List Of Required"
+  },
+  {
+   "fieldname": "required_skills",
+   "fieldtype": "Table",
+   "label": "Required Skills",
+   "options": "Required Item",
+   "reqd": 1
   },
   {
    "default": "0",
@@ -142,29 +152,13 @@
    "fieldname": "route",
    "fieldtype": "Data",
    "label": "Route"
-  },
-  {
-   "default": "Available",
-   "fieldname": "status",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "label": "Status",
-   "options": "Available\nClosed"
   }
  ],
  "has_web_view": 1,
  "index_web_pages_for_search": 1,
  "is_published_field": "is_published",
  "links": [],
-<<<<<<< HEAD
-<<<<<<< HEAD
- "modified": "2025-01-26 23:56:30.499312",
-=======
- "modified": "2025-01-26 01:56:44.130615",
->>>>>>> 3dc398b322b46ed19280ebd99e4c0d53f93c1d63
-=======
- "modified": "2025-01-26 01:56:44.130615",
->>>>>>> 3dc398b322b46ed19280ebd99e4c0d53f93c1d63
+ "modified": "2025-01-29 23:42:05.148215",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Job",
@@ -185,11 +179,9 @@
   }
  ],
  "route": "jobs",
- "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
- "title_field": "jop_title",
  "track_changes": 1,
  "translated_doctype": 1
 }
