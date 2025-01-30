@@ -6,7 +6,7 @@
  "allow_multiple": 0,
  "allow_print": 0,
  "anonymous": 0,
- "apply_document_permissions": 1,
+ "apply_document_permissions": 0,
  "banner_image": "",
  "button_label": "Save",
  "condition_json": "[]",
@@ -20,11 +20,7 @@
  "list_columns": [],
  "login_required": 1,
  "max_attachment_size": 0,
-<<<<<<< HEAD
- "modified": "2025-01-26 01:22:35.049679",
-=======
- "modified": "2025-01-26 02:54:49.661595",
->>>>>>> 3dc398b322b46ed19280ebd99e4c0d53f93c1d63
+ "modified": "2025-01-29 23:15:11.235094",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "add-job",
@@ -35,7 +31,7 @@
  "show_list": 0,
  "show_sidebar": 0,
  "success_title": "Successfully ",
- "success_url": "/",
+ "success_url": "/app/jisr-almaharat",
  "title": "Add Job",
  "web_form_fields": [
   {
