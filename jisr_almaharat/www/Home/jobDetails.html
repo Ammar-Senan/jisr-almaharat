@@ -2,6 +2,92 @@
 {% block head %}
 {% include 'templates/includes/head/head.html' %}
 {% endblock %}
+<div class="container">
+    <div class="hero-section">
+        <h1>{{detail.jop_title}} </h1>
+        <p>Join our team at <strong>Tech Innovators Inc.</strong> and help shape the future of technology.</p>
+    </div>
+</div>
+<!-- Job Details -->
+<div class="container">
+    <div class="job-details">
+        <div class="container">
+
+        </div>
+        <h3>Job Description</h3>
+        <p>
+            We are seeking a talented and experienced Senior Software Engineer to join our team. You will play a key
+            role in
+            designing, developing, and maintaining cutting-edge software solutions that drive our business forward.
+        </p>
+
+        <h5>Key Responsibilities</h5>
+        <ul>
+            <li><i class="fas fa-check-circle"></i>Design and develop scalable software applications.</li>
+            <li><i class="fas fa-check-circle"></i>Collaborate with cross-functional teams to deliver high-quality
+                products.
+            </li>
+            <li><i class="fas fa-check-circle"></i>Write clean, maintainable, and efficient code.</li>
+            <li><i class="fas fa-check-circle"></i>Mentor junior developers and conduct code reviews.</li>
+            <li><i class="fas fa-check-circle"></i>Ensure the performance, security, and scalability of applications.
+            </li>
+        </ul>
+
+        <h5>Requirements</h5>
+        {%for Requirement in detail.required_skills %}
+        <ul>
+            <li><i class="fas fa-check-circle"></i>{{Requirement.skill}}.</li>
+            <li><i class="fas fa-check-circle"></i>Proficiency in JavaScript, Python, or Java.</li>
+            <li><i class="fas fa-check-circle"></i>Experience with modern frameworks like React, Angular, or Django.
+            </li>
+            <li><i class="fas fa-check-circle"></i>Strong understanding of databases and SQL.</li>
+            <li><i class="fas fa-check-circle"></i>Excellent problem-solving and communication skills.</li>
+        </ul>
+        {% endfor %}
+
+        <h5>Location</h5>
+        <p><i class="fas fa-map-marker-alt"></i> {{detail.organization_site}}</p>
+
+        <h5>Salary</h5>
+        <p><i class="fas fa-dollar-sign"></i> $120,000 - $150,000 per year</p>
+    </div>
+</div>
+<!-- Sticky Apply Button  href="/application/{{detail.name}}" -->
+<div class="sticky-apply">
+    <!-- {% block script%}
+<script src="/assets/jisr_almaharat/www/js/jobDetails"></script>
+{% endblock %} -->
+
+    <a class="btn btn-primary py-3 px-5" href="/application/{{detail.name}}/Job">Apply Now</a>
+    <!-- id="{{detail.name}}"; -->
+    <!-- <button onclick="fetchJobDetails('kjkj')">Apply Now</button> -->
+    <!-- <button class="btn btn-primary py-3 px-5" href="application/{{detail.name}}">Browse More Jobs</button> -->
+</div>
+
+
+
+<!-- <script src="/jisr_almaharat/programming_module/web_form/application/application.js"></script> -->
+
+
+<!-- <div class="sticky-apply">
+    <button id="dialog_buton" class="btn btn-apply">Apply Now</button>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <style>
     body {
@@ -101,72 +187,3 @@
         /* Darker blue on hover */
     }
 </style>
-
-
-<div class="container">
-    <div class="hero-section">
-        <h1>{{detail.jop_title}} </h1>
-        <p>Join our team at <strong>Tech Innovators Inc.</strong> and help shape the future of technology.</p>
-    </div>
-</div>
-<!-- Job Details -->
-<div class="container">
-    <div class="job-details">
-        <div class="container">
-
-        </div>
-        <h3>Job Description</h3>
-        <p>
-            We are seeking a talented and experienced Senior Software Engineer to join our team. You will play a key
-            role in
-            designing, developing, and maintaining cutting-edge software solutions that drive our business forward.
-        </p>
-
-        <h5>Key Responsibilities</h5>
-        <ul>
-            <li><i class="fas fa-check-circle"></i>Design and develop scalable software applications.</li>
-            <li><i class="fas fa-check-circle"></i>Collaborate with cross-functional teams to deliver high-quality
-                products.
-            </li>
-            <li><i class="fas fa-check-circle"></i>Write clean, maintainable, and efficient code.</li>
-            <li><i class="fas fa-check-circle"></i>Mentor junior developers and conduct code reviews.</li>
-            <li><i class="fas fa-check-circle"></i>Ensure the performance, security, and scalability of applications.
-            </li>
-        </ul>
-
-        <h5>Requirements</h5>
-        {%for Requirement in detail.required_skills %}
-        <ul>
-            <li><i class="fas fa-check-circle"></i>{{Requirement.list_of_required}}.</li>
-            <!-- <li><i class="fas fa-check-circle"></i>Proficiency in JavaScript, Python, or Java.</li>
-            <li><i class="fas fa-check-circle"></i>Experience with modern frameworks like React, Angular, or Django.
-            </li>
-            <li><i class="fas fa-check-circle"></i>Strong understanding of databases and SQL.</li>
-            <li><i class="fas fa-check-circle"></i>Excellent problem-solving and communication skills.</li> -->
-        </ul>
-        {% endfor %}
-
-        <h5>Location</h5>
-        <p><i class="fas fa-map-marker-alt"></i> {{detail.organization_site}}</p>
-
-        <h5>Salary</h5>
-        <p><i class="fas fa-dollar-sign"></i> $120,000 - $150,000 per year</p>
-    </div>
-</div>
-
-<!-- Sticky Apply Button -->
-<div class="sticky-apply">
-    <a href="/form-applicants" class="btn btn-apply">Apply Now</a>
-</div>
-
-
-
-
-<!-- <div class="sticky-apply">
-    <button id="dialog_buton" class="btn btn-apply">Apply Now</button>
-</div> -->
-
-<!-- 
-{% block script%}
-<script src="/assets/jisr_almaharat/www/js/jobDetails"></script>
-{% endblock %} -->

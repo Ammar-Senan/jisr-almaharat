@@ -1,8 +1,7 @@
 {
  "actions": [],
  "allow_guest_to_view": 1,
- "allow_rename": 1,
- "autoname": "JOP-ID-.#####",
+ "autoname": "format: Job-ID-{#####}",
  "creation": "2024-12-29 00:16:06.045571",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -157,11 +156,19 @@
  "index_web_pages_for_search": 1,
  "is_published_field": "is_published",
  "links": [],
+<<<<<<< HEAD
+<<<<<<< HEAD
+ "modified": "2025-01-26 23:56:30.499312",
+=======
  "modified": "2025-01-26 01:56:44.130615",
+>>>>>>> 3dc398b322b46ed19280ebd99e4c0d53f93c1d63
+=======
+ "modified": "2025-01-26 01:56:44.130615",
+>>>>>>> 3dc398b322b46ed19280ebd99e4c0d53f93c1d63
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Job",
- "naming_rule": "Expression (old style)",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

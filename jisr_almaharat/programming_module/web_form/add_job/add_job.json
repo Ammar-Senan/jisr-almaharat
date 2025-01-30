@@ -9,6 +9,7 @@
  "apply_document_permissions": 1,
  "banner_image": "",
  "button_label": "Save",
+ "condition_json": "[]",
  "creation": "2025-01-25 14:00:41.656376",
  "doc_type": "Job",
  "docstatus": 0,
@@ -17,9 +18,13 @@
  "introduction_text": "<div class=\"ql-editor read-mode\"><p>Add New Job here</p></div>",
  "is_standard": 1,
  "list_columns": [],
- "login_required": 0,
+ "login_required": 1,
  "max_attachment_size": 0,
+<<<<<<< HEAD
+ "modified": "2025-01-26 01:22:35.049679",
+=======
  "modified": "2025-01-26 02:54:49.661595",
+>>>>>>> 3dc398b322b46ed19280ebd99e4c0d53f93c1d63
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "add-job",
@@ -29,8 +34,8 @@
  "show_attachments": 0,
  "show_list": 0,
  "show_sidebar": 0,
- "success_title": "New Job Added",
- "success_url": "/jobs",
+ "success_title": "Successfully ",
+ "success_url": "/",
  "title": "Add Job",
  "web_form_fields": [
   {
