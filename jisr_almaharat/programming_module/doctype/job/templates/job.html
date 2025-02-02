@@ -5,7 +5,7 @@
 {%  set organization = frappe.get_doc("Organization", doc.organization) %}
 
 
-<h1>{{ title }} <span class="badge badge-{{'primary' if doc.status== "Available" else 'secondary'}}">{{doc.status}}</span> </h1>
+<h1>{{ title }} <span class="badge badge-{{'primary' if doc.status== "Available" else 'secondary'}}" >{{doc.status}}</span> </h1>
 
 <p><strong>Job Application Date</strong></p>
 <p> <li>From  {{posting_date}} To  <span style="color:red">{{aplication_deadline}}</span></li> </p>
