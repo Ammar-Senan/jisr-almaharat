@@ -4,25 +4,38 @@
     <a href="/" class="logo d-flex align-items-center me-auto">
       <!-- Uncomment the line below if you also wish to use an image logo -->
       <img src="/assets/jisr_almaharat/site_assets/img/logo.png" alt="">
-      <h1 class="sitename">JISR AL_MHARAT</h1>
+      <h1 class="sitename">JISR AL-MHARAT</h1>
     </a>
 
     <nav id="navmenu" class="navmenu">
 
       <ul>
         <li><a href="index.html" class="active">Home<br></a></li>
-
-        <li><a href="#services">Services</a></li>
-        <li><a href="#Training">Training</a></li>
         <li><a href="/Home/more_job.html">Jobs</a></li>
-        <li><a href="Home/starter-page">Blog</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="/contact">Contact</a></li>
+        <li><a href="/Home/more_training.html">Trainings</a></li>
+        <li class="dropdown">
+          <a class="" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            Add
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <li><a href="/add-job/new">Add Job</a></li>
+            <li><a href="/add-training/new">Add Training</a></li>
+          </ul>
+        </li>
       </ul>
       <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
     </nav>
 
-    <a class="btn-getstarted flex-md-shrink-0" href="/create-a-count">LOGIN</a>
+    <a class="btn-getstarted flex-md-shrink-0" href="/login#login">LOGIN</a>
+    <a class="btn-getstarted flex-md-shrink-0" href="/login#signup">Register</a>
+
+    <a class="btn-getstarted flex-md-shrink-0" href="#profile">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+      </svg>
+      Profile
+    </a>
 
   </div>
 </header>
