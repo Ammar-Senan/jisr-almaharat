@@ -1,0 +1,130 @@
+{% extends "templates/web.html" %}
+{% block title %} {{_("Choose Acco Type")}} {% endblock %}
+{% block page_content %}
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+> 
+<mainclass="container">
+    
+<section class="account-selection">
+    <h2>Choose Your Account Type</h2>
+    <p>Please select your account type to continue registration.</p>
+    
+    <div class="buttons">
+        <!-- <a href="/me" class="btn btn-secondary">Regular User</a>
+        <a href="/create-organization-acount/new" class="btn btn-primary">Company</a> -->
+            {% if frappe.session.user != "Guest" %}
+            <button class="btn btn-secondary" onclick="assignRole('Regular User')">Regular User</button>
+            <button class="btn btn-primary" onclick="assignRole('Company')">Company</button>
+            {% else %}
+                    <p>يجب تسجيل الدخول لاختيار نوع المستخدم.</p>
+            {% endif %}
+
+    </div>
+</section>
+
+
+<script>
+function assignRole(userType) {
+    frappe.call({
+        method: "jisr_almaharat.api.assign_role",
+        args: {
+            email: frappe.session.user,
+            user_type: userType
+        },
+        callback: function(response) {
+            if (response.message) {
+                frappe.msgprint(response.message);
+                        setTimeout(function() {
+                    if(userType=='Company')
+                   // window.location.href = r.message;
+                   window.location.replace('/create-organization-acount'); 
+                    else
+                    window.location.replace('/me'); 
+                    }, 1000);
+            }
+        },
+        error: function(err) {
+            frappe.msgprint("حدث خطأ أثناء تحديث الدور.");
+        }
+    });
+}
+
+   
+    </script>
+<style>
+    /* Improved page appearance */
+    .account-selection {
+        text-align: center;
+        margin-top: 80px;
+        background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-width: 450px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Styling the heading and text */
+    .account-selection h2 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .account-selection p {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 20px;
+    }
+
+    /* Button styling */
+    .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .buttons a {
+        padding: 12px 25px;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        display: inline-block;
+        min-width: 140px;
+        text-align: center;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+        border: none;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+        border: none;
+    }
+
+    /* Hover effects */
+    .btn-primary:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+    }
+
+    .btn-secondary:hover {
+        background-color: #545b62;
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px rgba(108, 117, 125, 0.3);
+    }
+</style>
+  </main>
+  {% endblock %}

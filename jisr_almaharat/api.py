@@ -16,7 +16,43 @@ def new_book(book_name, au_name):
         return {"success": False, "message": str(e)}
     
 
+@frappe.whitelist()  # Allow this function to be accessed via API
+def assign_role(email, user_type):
+    """Assign a role to a user based on their selected user type"""
+    
+    if not frappe.db.exists("User", {"email": email}):
+        frappe.throw(f"User {email} does not exist.")
 
+    user_doc = frappe.get_doc("User", email)
+
+    # Role mapping based on selected user type
+    role_map = {
+        "Regular User": "User Role",
+        "Company": "Organization Role"
+    }
+
+    role_name = role_map.get(user_type)
+
+    if not role_name:
+        frappe.throw("Invalid user type.")
+
+    existing_roles = {role.role for role in user_doc.roles}
+
+    if role_name in existing_roles:
+        return f"User {email} already has the role {role_name}."
+
+    # Assign the role to the user
+    user_doc.append("roles", {"role": role_name})
+    user_doc.save(ignore_permissions=True)
+    frappe.db.commit()
+
+    # Log the role assignment instead of using print()
+    frappe.log_error(f"Assigned role: {role_name} to user: {email}", "User Role Update")
+
+    # Clear cache to ensure role updates take effect
+    frappe.clear_cache(user=email)
+
+    return f"Role  has been assigned based on user type : {user_type}."
     
 # @frappe.whitelist()  
 # def get_context(job_id=None):
