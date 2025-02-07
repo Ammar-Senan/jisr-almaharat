@@ -7,9 +7,10 @@
  "engine": "InnoDB",
  "field_order": [
   "applactopm_information",
-  "application_name",
-  "column_break_jgap",
   "kind",
+  "column_break_jgap",
+  "job_name",
+  "training_name",
   "applicant_information_section",
   "applicant_name",
   "phone",
@@ -33,22 +34,13 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Phone",
-   "options": "User1",
-   "reqd": 1
+   "options": "User1"
   },
   {
    "fieldname": "cv",
    "fieldtype": "Attach",
    "in_list_view": 1,
    "label": "CV"
-  },
-  {
-   "fieldname": "application_name",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Application_Name",
-   "options": "Job",
-   "reqd": 1
   },
   {
    "fieldname": "applactopm_information",
@@ -88,12 +80,25 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "job_name",
+   "fieldtype": "Link",
+   "label": "Job Name",
+   "options": "Job"
+  },
+  {
+   "fieldname": "training_name",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Training Name",
+   "options": "Training"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-01-27 19:24:39.424228",
+ "modified": "2025-02-02 22:21:30.868343",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Application",

@@ -5,16 +5,15 @@ frappe.ui.form.on("Application", {
 	// refresh(frm) {
 
 	// },
-    
-    // to change the link application_name to another doctype by change the kind value
+    // make job_name unhidden if kind is job and make training_name unhidden if kind is training
     kind: function (frm) {
-        // Check the value of the "kind" field
-        if (frm.doc.kind === 'Training') {
-            // Set the application_name field to link to Training
-            frm.set_df_property('application_name', 'options', 'Training');
+        if (frm.doc.kind === 'Job') {
+            frm.toggle_display('job_name', true);
+            frm.toggle_display('training_name', false);
         } else {
-            // Default: Link application_name to Job
-            frm.set_df_property('application_name', 'options', 'Job');
+            frm.toggle_display('training_name', true);
+            frm.toggle_display('job_name', false);
         }
-    }
+    },
+    
 });

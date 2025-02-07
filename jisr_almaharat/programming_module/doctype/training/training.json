@@ -24,9 +24,7 @@
   "description_of_training_section",
   "about_training",
   "list_of_required_section",
-  "required_skills",
-  "is_published",
-  "route"
+  "required_skills"
  ],
  "fields": [
   {
@@ -138,24 +136,11 @@
    "label": "Required Skills",
    "options": "Required Item",
    "reqd": 1
-  },
-  {
-   "default": "0",
-   "fieldname": "is_published",
-   "fieldtype": "Check",
-   "label": "Is Published"
-  },
-  {
-   "fieldname": "route",
-   "fieldtype": "Data",
-   "label": "Route"
   }
  ],
- "has_web_view": 1,
  "index_web_pages_for_search": 1,
- "is_published_field": "is_published",
  "links": [],
- "modified": "2025-01-25 14:17:39.690293",
+ "modified": "2025-02-07 02:19:13.002126",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Training",
@@ -175,7 +160,6 @@
    "write": 1
   }
  ],
- "route": "trainings",
  "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",

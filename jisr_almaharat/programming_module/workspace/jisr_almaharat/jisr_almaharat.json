@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"3BjA4mTPnQ\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Jisr Almaharat</span>\",\"col\":12}},{\"id\":\"-OGgezhmRl\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"C_1kkuvKDe\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"x4gdcc7ogo\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Site</b></span>\",\"col\":12}},{\"id\":\"3F89RXLW3v\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Home\",\"col\":3}},{\"id\":\"WOj4ELcBHG\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Home\",\"col\":3}},{\"id\":\"rZtNi6mF7-\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"hnYSYobXqM\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Add Section</b></span>\",\"col\":12}},{\"id\":\"LEUSyeelro\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Add Job\",\"col\":3}},{\"id\":\"vsDwOWBCqN\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Doctype</b></span>\",\"col\":12}},{\"id\":\"3si5PlDcYf\",\"type\":\"card\",\"data\":{\"card_name\":\"Organization\",\"col\":4}},{\"id\":\"6RM4Ao1Tce\",\"type\":\"card\",\"data\":{\"card_name\":\"Training\",\"col\":4}},{\"id\":\"ZDXmkwUuUH\",\"type\":\"card\",\"data\":{\"card_name\":\"Job\",\"col\":4}},{\"id\":\"_5pKuTdBXF\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"All Organization\",\"col\":4}},{\"id\":\"_6iniVhYxp\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"All Training\",\"col\":4}},{\"id\":\"7nrPp9u3eC\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"All Jobs\",\"col\":4}}]",
+ "content": "[{\"id\":\"3BjA4mTPnQ\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Jisr Almaharat</span>\",\"col\":12}},{\"id\":\"-OGgezhmRl\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"7o-02IW70W\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"total jobs\",\"col\":4}},{\"id\":\"C_1kkuvKDe\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"x4gdcc7ogo\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Site</b></span>\",\"col\":12}},{\"id\":\"Ic0qpC6QTR\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Organization Dashboard\",\"col\":3}},{\"id\":\"3F89RXLW3v\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Home\",\"col\":3}},{\"id\":\"WOj4ELcBHG\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Home\",\"col\":3}},{\"id\":\"rZtNi6mF7-\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"hnYSYobXqM\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Add Section</b></span>\",\"col\":12}},{\"id\":\"LEUSyeelro\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Add Job\",\"col\":3}},{\"id\":\"vsDwOWBCqN\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Doctype</b></span>\",\"col\":12}},{\"id\":\"3si5PlDcYf\",\"type\":\"card\",\"data\":{\"card_name\":\"Organization\",\"col\":4}},{\"id\":\"6RM4Ao1Tce\",\"type\":\"card\",\"data\":{\"card_name\":\"Training\",\"col\":4}},{\"id\":\"ZDXmkwUuUH\",\"type\":\"card\",\"data\":{\"card_name\":\"Job\",\"col\":4}},{\"id\":\"_5pKuTdBXF\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"All Organization\",\"col\":4}},{\"id\":\"_6iniVhYxp\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"All Training\",\"col\":4}},{\"id\":\"7nrPp9u3eC\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"All Jobs\",\"col\":4}}]",
  "creation": "2025-01-24 19:32:07.251384",
  "custom_blocks": [],
  "docstatus": 0,
@@ -67,11 +67,16 @@
    "type": "Link"
   }
  ],
- "modified": "2025-01-25 19:37:42.498721",
+ "modified": "2025-02-07 02:45:10.313532",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Jisr Almaharat",
- "number_cards": [],
+ "number_cards": [
+  {
+   "label": "total jobs",
+   "number_card_name": "total jobs"
+  }
+ ],
  "owner": "Administrator",
  "parent_page": "",
  "public": 1,
@@ -92,6 +97,13 @@
  "roles": [],
  "sequence_id": 40.0,
  "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Organization Dashboard",
+   "link_to": "organization-dashboa",
+   "type": "Page"
+  },
   {
    "color": "Grey",
    "doc_view": "List",

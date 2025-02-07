@@ -1,6 +1,7 @@
 routes=[
     {'from_route':'/Home/jobDetails/<docname>','to_route':'Home/jobDetails'},
-    {'from_route':'/application/<docname>/<Jobkind>','to_route':'application/new'},
+    {'from_route':'/appling/<docname>/<Jobkind>','to_route':'appling/new'},
     {'from_route':'/Home/training_details/<docname>','to_route':'Home/training_details'},
+    # {'from_route':'/organization-dashboa/<docname>','to_route':'/organization-dashboa'},
     
 ]

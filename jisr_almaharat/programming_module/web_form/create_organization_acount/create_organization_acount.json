@@ -18,7 +18,7 @@
  "list_columns": [],
  "login_required": 0,
  "max_attachment_size": 0,
- "modified": "2025-01-04 18:40:38.889445",
+ "modified": "2025-02-05 17:24:04.235825",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "create-organization-acount",
@@ -38,7 +38,6 @@
    "label": "Organiztion Information",
    "max_length": 0,
    "max_value": 0,
-   "precision": "",
    "read_only": 0,
    "reqd": 0,
    "show_in_filter": 0
@@ -51,21 +50,31 @@
    "label": "Organization Name",
    "max_length": 0,
    "max_value": 0,
-   "precision": "",
+   "options": "",
    "read_only": 0,
    "reqd": 1,
    "show_in_filter": 0
   },
   {
    "allow_read_on_all_link_options": 0,
-   "fieldname": "industry",
-   "fieldtype": "Select",
+   "fieldname": "email",
+   "fieldtype": "Data",
    "hidden": 0,
-   "label": "Industry",
+   "label": "Email",
    "max_length": 0,
    "max_value": 0,
-   "options": "Technology\nEducational\nMedical\nMechanic\nArchitectural\nAgricultural",
-   "precision": "",
+   "read_only": 0,
+   "reqd": 1,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "hidden": 0,
+   "label": "Website",
+   "max_length": 0,
+   "max_value": 0,
    "read_only": 0,
    "reqd": 1,
    "show_in_filter": 0
@@ -78,9 +87,8 @@
    "label": "Phone",
    "max_length": 0,
    "max_value": 0,
-   "precision": "",
    "read_only": 0,
-   "reqd": 1,
+   "reqd": 0,
    "show_in_filter": 0
   },
   {
@@ -90,35 +98,21 @@
    "hidden": 0,
    "max_length": 0,
    "max_value": 0,
-   "precision": "",
    "read_only": 0,
    "reqd": 0,
    "show_in_filter": 0
   },
   {
    "allow_read_on_all_link_options": 0,
-   "fieldname": "email",
-   "fieldtype": "Data",
+   "fieldname": "industry",
+   "fieldtype": "Select",
    "hidden": 0,
-   "label": "Email",
+   "label": "Industry",
    "max_length": 0,
    "max_value": 0,
-   "precision": "",
+   "options": "Technology\nEducational\nMedical\nMechanic\nArchitectural\nAgricultural",
    "read_only": 0,
    "reqd": 1,
-   "show_in_filter": 0
-  },
-  {
-   "allow_read_on_all_link_options": 0,
-   "fieldname": "location",
-   "fieldtype": "Data",
-   "hidden": 0,
-   "label": "Location",
-   "max_length": 0,
-   "max_value": 0,
-   "precision": "",
-   "read_only": 0,
-   "reqd": 0,
    "show_in_filter": 0
   },
   {
@@ -129,7 +123,6 @@
    "label": "Registration date",
    "max_length": 0,
    "max_value": 0,
-   "precision": "",
    "read_only": 0,
    "reqd": 1,
    "show_in_filter": 0
@@ -142,9 +135,8 @@
    "label": "Logo",
    "max_length": 0,
    "max_value": 0,
-   "precision": "",
    "read_only": 0,
-   "reqd": 1,
+   "reqd": 0,
    "show_in_filter": 0
   },
   {
@@ -155,7 +147,6 @@
    "label": "Organization",
    "max_length": 0,
    "max_value": 0,
-   "precision": "",
    "read_only": 0,
    "reqd": 0,
    "show_in_filter": 0
@@ -168,7 +159,6 @@
    "label": "About Organization",
    "max_length": 0,
    "max_value": 0,
-   "precision": "",
    "read_only": 0,
    "reqd": 1,
    "show_in_filter": 0
@@ -181,7 +171,18 @@
    "label": "Locations Info",
    "max_length": 0,
    "max_value": 0,
-   "precision": "",
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "hidden": 0,
+   "label": "Location",
+   "max_length": 0,
+   "max_value": 0,
    "read_only": 0,
    "reqd": 0,
    "show_in_filter": 0
