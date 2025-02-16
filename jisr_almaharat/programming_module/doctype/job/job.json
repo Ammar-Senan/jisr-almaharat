@@ -16,6 +16,7 @@
   "jop_title",
   "posting_date",
   "jop_type",
+  "job_categories",
   "jop_description",
   "column_break_krqq",
   "status",
@@ -152,13 +153,20 @@
    "fieldname": "route",
    "fieldtype": "Data",
    "label": "Route"
+  },
+  {
+   "fieldname": "job_categories",
+   "fieldtype": "Select",
+   "label": "Job Categories",
+   "options": "Marketing\nCustomer service\nHuman Resource\nProject Managment\nBusuness Development\nSeals and comunication\nTeaching and Education",
+   "reqd": 1
   }
  ],
  "has_web_view": 1,
  "index_web_pages_for_search": 1,
  "is_published_field": "is_published",
  "links": [],
- "modified": "2025-02-05 16:43:29.384363",
+ "modified": "2025-02-15 21:43:29.130746",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Job",
