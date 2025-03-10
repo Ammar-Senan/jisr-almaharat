@@ -7,24 +7,27 @@
  "engine": "InnoDB",
  "field_order": [
   "create_account_section",
+  "image",
   "name1",
   "email",
   "phone_number",
-  "password",
-  "confirm_password"
+  "specialization",
+  "address",
+  "about_me"
  ],
  "fields": [
   {
    "fieldname": "name1",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Name",
    "reqd": 1
   },
   {
    "fieldname": "email",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Email",
-   "placeholder": "                                                                                                  @gmail.com",
    "reqd": 1,
    "unique": 1
   },
@@ -34,21 +37,30 @@
    "label": "Phone Number"
   },
   {
-   "fieldname": "password",
-   "fieldtype": "Password",
-   "in_list_view": 1,
-   "label": "Password",
-   "reqd": 1
-  },
-  {
    "fieldname": "create_account_section",
    "fieldtype": "Section Break",
    "label": "Create Account"
   },
   {
-   "fieldname": "confirm_password",
-   "fieldtype": "Password",
-   "label": "Confirm Password"
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Image"
+  },
+  {
+   "fieldname": "specialization",
+   "fieldtype": "Select",
+   "label": "Specialization",
+   "options": "Technology\nEducational\nMedical\nMechanic\nArchitectural\nAgricultural"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Data",
+   "label": "Address"
+  },
+  {
+   "fieldname": "about_me",
+   "fieldtype": "Text",
+   "label": "About Me"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -58,7 +70,7 @@
    "link_fieldname": "applicant_name"
   }
  ],
- "modified": "2025-01-08 00:28:23.873518",
+ "modified": "2025-03-09 06:24:11.804148",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "User1",

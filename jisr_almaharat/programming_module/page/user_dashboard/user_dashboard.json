@@ -1,0 +1,23 @@
+{
+ "content": null,
+ "creation": "2025-03-08 17:11:19.758057",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2025-03-08 17:11:19.758057",
+ "modified_by": "Administrator",
+ "module": "programming module",
+ "name": "user-dashboard",
+ "owner": "Administrator",
+ "page_name": "user-dashboard",
+ "roles": [
+  {
+   "role": "User Role"
+  }
+ ],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "User Dashboard"
+}

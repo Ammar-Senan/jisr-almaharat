@@ -20,15 +20,6 @@
  {
   "docstatus": 0,
   "doctype": "Workflow State",
-  "icon": "ok-sign",
-  "modified": "2025-01-02 02:53:27.668603",
-  "name": "Approved",
-  "style": "Success",
-  "workflow_state_name": "Approved"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
   "icon": "remove",
   "modified": "2025-01-02 02:53:27.671282",
   "name": "Rejected",
@@ -38,10 +29,28 @@
  {
   "docstatus": 0,
   "doctype": "Workflow State",
+  "icon": "ok-sign",
+  "modified": "2025-01-02 02:53:27.668603",
+  "name": "Approved",
+  "style": "Success",
+  "workflow_state_name": "Approved"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
   "icon": "",
   "modified": "2025-01-10 16:54:50.742273",
   "name": "Approval Pending",
   "style": "",
   "workflow_state_name": "Approval Pending"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2025-02-15 01:01:43.008279",
+  "name": "Cancel",
+  "style": "",
+  "workflow_state_name": "Cancel"
  }
 ]

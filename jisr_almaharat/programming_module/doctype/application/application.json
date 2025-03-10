@@ -6,6 +6,9 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "organization_information_section",
+  "organization_name",
+  "organization_email",
   "applactopm_information",
   "kind",
   "column_break_jgap",
@@ -93,12 +96,32 @@
    "hidden": 1,
    "label": "Training Name",
    "options": "Training"
+  },
+  {
+   "fieldname": "organization_information_section",
+   "fieldtype": "Section Break",
+   "label": "Organization Information"
+  },
+  {
+   "fetch_from": "job_name.organization_name",
+   "fieldname": "organization_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Organization Name",
+   "options": "Organization"
+  },
+  {
+   "fetch_from": "job_name.organization_email",
+   "fieldname": "organization_email",
+   "fieldtype": "Data",
+   "label": "Organization Email",
+   "options": "Email"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-02-02 22:21:30.868343",
+ "modified": "2025-03-04 01:36:48.258674",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Application",

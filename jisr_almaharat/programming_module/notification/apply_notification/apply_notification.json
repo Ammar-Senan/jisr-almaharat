@@ -1,0 +1,29 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "creation": "2025-03-08 01:38:14.863683",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Application",
+ "enabled": 1,
+ "event": "New",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "<h3>Dear {{ doc.organization_name | default(\"Esteemed Organization\") }},</h3>\r\n\r\n<p>A new {{ doc.kind | default(\"application\") }} application has been Created.</p>\r\n\r\n<p><strong>Applicant Name:</strong> {{ doc.applicant_name | default(\"Unknown Applicant\") }}</p>\r\n\r\n{% if doc.kind == \"Job\" %}\r\n<p><strong>Job Position:</strong> {{ doc.job_name | default(\"Unknown Job\") }}</p>\r\n{% else %}\r\n<p><strong>Training Program:</strong> {{ doc.training_name | default(\"Unknown Training\") }}</p>\r\n{% endif %}\r\n\r\n<p>Please go to the platform to review the application.</p>\r\n\r\n<p><a href=\"{{ doc.platform_url | default('#') }}\" style=\"display: inline-block; padding: 10px 15px; background-color: #007bff; color: #ffffff; text-decoration: none; border-radius: 5px;\">Go to Platform</a></p>\r\n\r\n<p>Best regards,</p>\r\n<p><strong>Jisr Almaharat</strong></p>\r\n",
+ "modified": "2025-03-08 01:38:14.863683",
+ "modified_by": "Administrator",
+ "module": "programming module",
+ "name": "Apply notification",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_document_field": "organization_email"
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "sender": "Jisr Al-mharat",
+ "sender_email": "jisralmharat@gmail.com",
+ "subject": "You have a new {{ doc.kind }} application"
+}
