@@ -224,7 +224,7 @@
   "doctype": "Custom DocPerm",
   "email": 1,
   "export": 1,
-  "if_owner": 0,
+  "if_owner": 1,
   "import": 1,
   "modified": "2025-01-15 22:49:12.794359",
   "name": "0a0j4ca5b7",

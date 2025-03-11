@@ -1,0 +1,31 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "doc.workflow_state ==\"Approved\"",
+ "creation": "2025-03-11 02:40:44.472851",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Application",
+ "enabled": 1,
+ "event": "Value Change",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "<h3>Dear {{ doc.applicant_name | default(\"Applicant\") }},</h3>\n\n<p>Your application to join the {{ doc.kind | default(\"application\") }} of  \n{% if doc.kind == \"Job\" %}  \n  {{ doc.job_name | default(\"Unknown Job\") }}  \n{% else %}  \n  {{ doc.training_name | default(\"Unknown Training\") }}  \n{% endif %}  \nat {{ doc.organization_name | default(\"Esteemed Organization\") }} has been approved.</p>\n\n<p>Please contact the company to schedule a work date.</p>\n\n<p>\n  <a href=\"mailto:{{ doc.organization_email }}\" style=\"display: inline-block; text-decoration: none;\">\n    {{ doc.organization_email }}\n  </a>\n</p>\n\n<br><br>\n<p>All the best,</p>\n<p><strong>Jisr Almaharat</strong></p>\n",
+ "modified": "2025-03-11 02:41:02.239779",
+ "modified_by": "Administrator",
+ "module": "programming module",
+ "name": "Approved application email",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_document_field": "email"
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "sender": "Jisr Al-mharat",
+ "sender_email": "jisralmharat@gmail.com",
+ "subject": "{{ doc.kind }} application approved",
+ "value_changed": "workflow_state"
+}

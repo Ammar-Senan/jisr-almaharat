@@ -1,0 +1,27 @@
+{
+ "attach_print": 0,
+ "channel": "System Notification",
+ "creation": "2025-03-11 04:30:53.396396",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Organization",
+ "enabled": 1,
+ "event": "New",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "<p><strong>Dear Admin,</strong></p>\r\n\r\n<p>A new company has registered on the platform. Please review the company's information and approve it to ensure its accuracy and completeness.</p>\r\n\r\n<p><strong>Company Information:</strong><br>\r\n  Company Name: {{ doc.organization_name }}<br>\r\n  Email: {{ doc.email }}<br>\r\n  Address: {{ doc.location }}</p>\r\n\r\n<p>Please verify the data and take the appropriate action.</p>\r\n\r\n<p><strong>Thank you,</strong><br>\r\n  <strong>Jisr Almaharat </strong></p>\r\n",
+ "modified": "2025-03-11 04:30:53.396396",
+ "modified_by": "Administrator",
+ "module": "programming module",
+ "name": "Create Organization",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_role": "Administrator"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "New Organization created ({{doc.organization_name}})"
+}

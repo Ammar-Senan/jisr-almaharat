@@ -23,12 +23,12 @@
  ],
  "fields": [
   {
-   "fetch_from": "applicant_name.email",
+   "fetch_from": ".",
    "fieldname": "email",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Email",
-   "options": "User1",
+   "options": "Email",
    "reqd": 1
   },
   {
@@ -121,7 +121,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-03-04 01:36:48.258674",
+ "modified": "2025-03-11 02:03:45.633941",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Application",
