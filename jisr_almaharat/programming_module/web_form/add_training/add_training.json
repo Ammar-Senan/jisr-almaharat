@@ -18,7 +18,7 @@
  "list_columns": [],
  "login_required": 0,
  "max_attachment_size": 0,
- "modified": "2025-02-07 16:12:22.192257",
+ "modified": "2025-03-16 03:18:12.827908",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "add-training",
@@ -28,6 +28,9 @@
  "show_attachments": 0,
  "show_list": 0,
  "show_sidebar": 0,
+ "success_message": "A new training created",
+ "success_title": "You post a new training",
+ "success_url": "/app/organization-dashboa",
  "title": "Add Training",
  "web_form_fields": [
   {
@@ -117,6 +120,18 @@
   },
   {
    "allow_read_on_all_link_options": 0,
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "hidden": 0,
+   "label": "Image",
+   "max_length": 0,
+   "max_value": 0,
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
    "fieldname": "training_title",
    "fieldtype": "Data",
    "hidden": 0,
@@ -149,7 +164,7 @@
    "max_length": 0,
    "max_value": 0,
    "read_only": 1,
-   "reqd": 1,
+   "reqd": 0,
    "show_in_filter": 0
   },
   {
@@ -177,6 +192,7 @@
   },
   {
    "allow_read_on_all_link_options": 0,
+   "default": "Available",
    "fieldname": "training_status",
    "fieldtype": "Select",
    "hidden": 0,
@@ -184,8 +200,8 @@
    "max_length": 0,
    "max_value": 0,
    "options": "Available\nClose",
-   "read_only": 0,
-   "reqd": 1,
+   "read_only": 1,
+   "reqd": 0,
    "show_in_filter": 0
   },
   {

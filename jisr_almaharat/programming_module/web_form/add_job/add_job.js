@@ -1,33 +1,28 @@
-frappe.ready(function() {  
-    // bind events here 
-	//Organization Site add value to it
-	// $('input[data-fieldname="organization"]').on('change', function() {
-	// 	var organization = $('input[data-fieldname="organization"]').val();
-	// 	frappe.db.get_value("Organization", organization, "site", function(value) {
-	// 		$('input[data-fieldname="site"]').val(value.message.site);
-	// 	});
-	// });
+frappe.ready(function() { 
 
+	let userEmail = frappe.session.user;
+	frappe.call({
+		method: 'frappe.client.get_list',
+		args: {
+		  doctype: 'Organization',
+		  fields: ['name', 'organization_name', 'email', 'website', 'location'], 
+		  filters: {
+			email: userEmail
+		  }
+		},
+		callback: function (response) {
+		  const organization = response.message || [];
+			if (organization.length > 0) {
+				frappe.web_form.set_value('organization_name', organization[0].organization_name);
+				frappe.web_form.set_value('organization_email', organization[0].email);
+				frappe.web_form.set_value('organization_site', organization[0].website);
+				frappe.web_form.set_value('organization_location', organization[0].location);
+			}
 
-	/////////////////////////////////////////
-	frappe.web_form.on('after_load', () => {
-		const user_email = "{{ user_email }}";
-		if (user_email) {
-			frappe.web_form.set_value('jop_title', user_email);
-		}
-	});
-	///////////////////////////////////
-	let session = frappe.session
-	// frappe.web_form.set_value("jop_title", session.user);
-	// frappe.web_form.set_value("jop_title", session.user_email);
-	// frappe.web_form.on('after_load', () => {
-	// 	frappe.msgprint('تم تحميل الصفحة');
-	// });
-	frappe.web_form.after_load = () => {
-		frappe.msgprint('Value must be more than 1000');
-	}
-	
-	
+	}});
+
+	frappe.web_form.set_value('posting_date', frappe.datetime.get_today());
+
 	
  
 });

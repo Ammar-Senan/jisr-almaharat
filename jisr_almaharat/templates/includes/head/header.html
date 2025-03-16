@@ -2,41 +2,97 @@
   <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
     <a href="/" class="logo d-flex align-items-center me-auto">
-      <!-- Uncomment the line below if you also wish to use an image logo -->
       <img src="/assets/jisr_almaharat/site_assets/img/logo.png" alt="">
       <h1 class="sitename">JISR AL-MHARAT</h1>
     </a>
-
+    <!-- // change then to be active on click -->
     <nav id="navmenu" class="navmenu">
-
       <ul>
-        <li><a href="index.html" class="active">Home<br></a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="/Home/more_job.html">Jobs</a></li>
         <li><a href="/Home/more_training.html">Trainings</a></li>
-        <li class="dropdown">
-          <a class="" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-            Add
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <li><a href="/add-job/new">Add Job</a></li>
-            <li><a href="/add-training/new">Add Training</a></li>
-          </ul>
-        </li>
       </ul>
       <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
     </nav>
 
-    <a class="btn-getstarted flex-md-shrink-0" href="/login#login">LOGIN</a>
-    <a class="btn-getstarted flex-md-shrink-0" href="/login#signup">Register</a>
+    <!-- أزرار تسجيل الدخول والتسجيل -->
+    <a id="loginBtn" class="btn-getstarted flex-md-shrink-0" href="/login#login">LOGIN</a>
+    <a id="registerBtn" class="btn-getstarted flex-md-shrink-0" href="/login#signup">Register</a>
 
-    <a class="btn-getstarted flex-md-shrink-0" href="/app/organization-dashboa">
+    <!-- "Profile" -->
+    <a class="btn-getstarted flex-md-shrink-0" href="/app/organization-dashboa" id="profileBtn" style="display: none;">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle"
         viewBox="0 0 16 16">
-        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
         <path fill-rule="evenodd"
-          d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+          d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
       </svg>
-      Profile
+      <span id="username">Profile</span>
     </a>
+
   </div>
 </header>
+
+<script>
+  // JavaScript to Fetch Logged-in User
+document.addEventListener("DOMContentLoaded", function () {
+    let loginButton = document.getElementById("loginBtn");
+    let registerButton = document.getElementById("registerBtn");
+    let ProfileButton = document.getElementById("profileBtn");
+
+    fetch('/api/method/frappe.auth.get_logged_user', {
+        method: 'GET',
+        credentials: 'include'
+    })
+    .then(response => response.json())
+    .then(data => {
+        let loggedInUser = data.message;
+
+        if (loggedInUser) {
+            // Hide the "Login" and "Register" button if user is logged in and show the "Profile" button
+            if (loginButton) loginButton.style.display = "none";
+            if (registerButton) registerButton.style.display = "none";
+            if (ProfileButton) ProfileButton.style.display = "block";
+        } else {
+            // Show the "Login" and "Register" button if user is not logged in and hide the "Profile" button
+            if (loginButton) loginButton.style.display = "inline";
+            if (registerButton) registerButton.style.display = "block";
+            if (ProfileButton) ProfileButton.style.display = "none";
+        }
+    })
+    .catch(error => {
+        console.error("Error fetching session:", error);
+    });
+});
+
+
+// to change the active class on click
+document.addEventListener('DOMContentLoaded', function() {
+  const navLinks = document.querySelectorAll('.navmenu ul li a');
+
+  // Retrieve the active link from localStorage
+  const activeLink = localStorage.getItem('activeLink');
+
+  // Set the active class based on localStorage
+  if (activeLink) {
+    navLinks.forEach(link => {
+      if (link.getAttribute('href') === activeLink) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(event) {
+      // Remove the 'active' class from all links
+      navLinks.forEach(link => link.classList.remove('active'));
+
+      // Add the 'active' class to the clicked link
+      this.classList.add('active');
+
+      // Store the active link in localStorage
+      localStorage.setItem('activeLink', this.getAttribute('href'));
+    });
+  });
+});
+</script>

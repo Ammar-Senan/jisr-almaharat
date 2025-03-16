@@ -72,9 +72,10 @@
 </div>
 <!-- Sticky Apply Button  href="/application/{{detail.name}}" -->
 <div class="sticky-apply">
-    <a class="btn btn-primary py-3 px-5" href="/appling/{{detail.name}}/Job">Apply Now</a>
-    <!-- id="{{detail.name}}"; -->
-    <!-- <button onclick="fetchJobDetails('kjkj')">Apply Now</button> -->
+    <a id="applyBtn" class="btn btn-primary py-3 px-5" href="/appling/{{detail.name}}/Job">Apply Now</a>
+    <!-- أزرار تسجيل الدخول والتسجيل -->
+    <a id="loginBtn" class="btn btn-primary py-3 px-5" href="/login#login">LOGIN</a>
+    <a id="registerBtn" class="btn btn-primary py-3 px-5" href="/login#signup">Register</a>
 
 
 
@@ -177,3 +178,36 @@
         /* Darker blue on hover */
     }
 </style>
+
+<!-- /////  check the loging  ///// -->
+ <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    let loginButton = document.getElementById("loginBtn");
+    let registerButton = document.getElementById("registerBtn");
+    let applyButton = document.getElementById("applyBtn");
+
+    fetch('/api/method/frappe.auth.get_logged_user', {
+        method: 'GET',
+        credentials: 'include'
+    })
+    .then(response => response.json())
+    .then(data => {
+        let loggedInUser = data.message;
+
+        if (loggedInUser) {
+            // Hide the "Login" and "Register" button if user is logged in and show the "Profile" button
+            if (loginButton) loginButton.style.display = "none";
+            if (registerButton) registerButton.style.display = "none";
+            if (applyButton) applyButton.style.display = "inline";
+        } else {
+            // Show the "Login" and "Register" button if user is not logged in and hide the "Profile" button
+            if (loginButton) loginButton.style.display = "inline";
+            if (registerButton) registerButton.style.display = "inline";
+            if (applyButton) applyButton.style.display = "none";
+        }
+    })
+    .catch(error => {
+        console.error("Error fetching session:", error);
+    });
+});
+ </script>

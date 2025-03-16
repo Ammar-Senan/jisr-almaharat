@@ -9,6 +9,7 @@
  "apply_document_permissions": 1,
  "banner_image": "",
  "button_label": "Save",
+ "condition_json": "[]",
  "creation": "2025-01-25 14:00:41.656376",
  "doc_type": "Job",
  "docstatus": 0,
@@ -19,7 +20,7 @@
  "list_columns": [],
  "login_required": 0,
  "max_attachment_size": 0,
- "modified": "2025-02-15 21:47:17.462094",
+ "modified": "2025-03-16 03:18:43.416927",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "add-job",
@@ -29,10 +30,23 @@
  "show_attachments": 0,
  "show_list": 0,
  "show_sidebar": 0,
- "success_title": "Successfully ",
- "success_url": "/app/jisr-almaharat",
+ "success_message": "You create a new job ",
+ "success_title": "New Job Posted",
+ "success_url": "/app/organization-dashboa",
  "title": "Add Job",
  "web_form_fields": [
+  {
+   "allow_read_on_all_link_options": 0,
+   "fieldname": "organization_informtation",
+   "fieldtype": "Section Break",
+   "hidden": 0,
+   "label": "Organization Informtation",
+   "max_length": 0,
+   "max_value": 0,
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
   {
    "allow_read_on_all_link_options": 0,
    "fieldname": "organization_name",
@@ -54,6 +68,18 @@
    "label": "Organization Site",
    "max_length": 0,
    "max_value": 0,
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
+   "fieldname": "column_break_otgk",
+   "fieldtype": "Column Break",
+   "hidden": 0,
+   "max_length": 0,
+   "max_value": 0,
+   "options": "Organization",
    "read_only": 0,
    "reqd": 0,
    "show_in_filter": 0
@@ -84,6 +110,18 @@
   },
   {
    "allow_read_on_all_link_options": 0,
+   "fieldname": "job_information",
+   "fieldtype": "Section Break",
+   "hidden": 0,
+   "label": "Job Information",
+   "max_length": 0,
+   "max_value": 0,
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
    "fieldname": "jop_title",
    "fieldtype": "Data",
    "hidden": 0,
@@ -102,8 +140,8 @@
    "label": "Posting Date",
    "max_length": 0,
    "max_value": 0,
-   "read_only": 0,
-   "reqd": 1,
+   "read_only": 1,
+   "reqd": 0,
    "show_in_filter": 0
   },
   {
@@ -129,7 +167,7 @@
    "max_value": 0,
    "options": "Marketing\nCustomer service\nHuman Resource\nProject Managment\nBusuness Development\nSeals and comunication\nTeaching and Education",
    "read_only": 0,
-   "reqd": 1,
+   "reqd": 0,
    "show_in_filter": 0
   },
   {
@@ -146,6 +184,17 @@
   },
   {
    "allow_read_on_all_link_options": 0,
+   "fieldname": "column_break_krqq",
+   "fieldtype": "Column Break",
+   "hidden": 0,
+   "max_length": 0,
+   "max_value": 0,
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
    "default": "Available",
    "fieldname": "status",
    "fieldtype": "Select",
@@ -154,7 +203,7 @@
    "max_length": 0,
    "max_value": 0,
    "options": "Available\nClosed",
-   "read_only": 0,
+   "read_only": 1,
    "reqd": 0,
    "show_in_filter": 0
   },
@@ -196,6 +245,30 @@
   },
   {
    "allow_read_on_all_link_options": 0,
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "hidden": 0,
+   "label": "Image",
+   "max_length": 0,
+   "max_value": 0,
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
+   "fieldname": "list_of_required_section",
+   "fieldtype": "Section Break",
+   "hidden": 0,
+   "label": "List Of Required",
+   "max_length": 0,
+   "max_value": 0,
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
    "fieldname": "required_skills",
    "fieldtype": "Table",
    "hidden": 0,
@@ -209,8 +282,23 @@
   },
   {
    "allow_read_on_all_link_options": 0,
-   "fieldtype": "Attach",
+   "default": "0",
+   "fieldname": "is_published",
+   "fieldtype": "Check",
    "hidden": 0,
+   "label": "Is Published",
+   "max_length": 0,
+   "max_value": 0,
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "hidden": 0,
+   "label": "Route",
    "max_length": 0,
    "max_value": 0,
    "read_only": 0,

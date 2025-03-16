@@ -16,12 +16,13 @@ $main.html(`
     <div class="dashboard-container" style="display: flex; height: 100vh;">
         <aside style="width: 260px; background-color: #2c3e50; color: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
             <nav>
-                <ul style="list-style: none; padding: 0;">
+                <ul style="list-style: none; padding: 0;"> 
                     <li><a href="#" class="menu-item" id="users-btn">Users</a></li>
                     <li><a href="#" class="menu-item" id="organizations-btn">Organizations</a></li>
                     <li><a href="#" class="menu-item" id="jobs-btn">Jobs</a></li>
                     <li><a href="#" class="menu-item" id="trainings-btn">Trainings</a></li>
                     <li><a href="#" class="menu-item" id="applications-btn">Applications</a></li>
+                   
                 </ul>
             </nav>
         </aside>

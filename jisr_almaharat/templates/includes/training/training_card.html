@@ -14,8 +14,8 @@
           <div class="col-lg-4 mb-5">
               <div class="card h-100 shadow border-0">
                   <!-- <img src="/assets/jisr_almaharat/site_assets/img/blog/blog-1.jpg" class="img-fluid" alt=""> -->
-                  <img class="card-img-top" src="/assets/jisr_almaharat/site_assets/img/traininimg.jpg" alt="training Photo" />
-                  <div class="card-body p-4">
+                  <img class="card-img-top training-image" src="{% if training.image %}{{ training.image }}{% else %}/assets/jisr_almaharat/site_assets/img/traininimg.jpg{% endif %}" alt="training Photo" />
+                  <div class="card-body p-4 ">
                       <div class="badge bg-primary bg-gradient rounded-pill mb-2">{{ training.training_pattren }}</div>
                       <a class="text-decoration-none link-dark stretched-link" href="#!">
                           <h5 class="card-title mb-3">{{ training.training_title }}</h5>
@@ -53,3 +53,11 @@
 
   </div>
 </section>
+<style>
+    .training-image {
+    width: 100%; /* Ensure the image takes up the full width of its container */
+    height: 200px; /* Set a fixed height (adjust as needed) */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    object-position: center; /* Centers the image within the container */
+  }
+</style>

@@ -3,47 +3,51 @@
 
   <!-- Section Title -->
   <div class="container section-title" data-aos="fade-up">
-    <!-- <h2>New JOBS</h2> -->
     <p>Recent Jobs</p>
   </div><!-- End Section Title -->
 
   <div class="container">
-
     <div class="row gy-3">
-      {% for job in Job_info[:3] %}
+      <!-- Filter jobs by status "Available" and sort by creation_date -->
+      {% set available_jobs = Job_info|selectattr('status', 'eq', 'Available')|sort(attribute='creation_date', reverse=true) %}
+
+      <!-- Loop through the first 3 available jobs -->
+      {% for job in available_jobs[:3] %}
       <div class="col-xl-4 col-md-6">
         <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="100">
-
           <div class="post-img position-relative overflow-hidden">
-            <img src="/assets/jisr_almaharat/site_assets/img/blog/blog-1.jpg" class="img-fluid" alt="">
-            <span class="post-date">{{job.aplication_deadline}}</span>
+            <!-- Dynamic Image with Consistent Size -->
+            <img 
+              src="{% if job.image %}{{ job.image }}{% else %}/assets/jisr_almaharat/site_assets/img/blog/blog-1.jpg{% endif %}" 
+              class="img-fluid job-image" 
+              alt="{{ job.jop_title }}"
+            >
+            <span class="post-date">{{ job.aplication_deadline }}</span>
           </div>
           <div class="post-content d-flex flex-column">
-            <h3 class="post-title">{{job.jop_title}}</h3>
+            <h3 class="post-title">{{ job.jop_title }}</h3>
             <div href="" class="meta d-flex align-items-center">
               <div class="d-flex align-items-center">
-                <i class="bi bi-people"></i> <span class="ps-2">{{job.organization_name}}</span>
+                <i class="bi bi-people"></i> <span class="ps-2">{{ job.organization_name }}</span>
               </div>
               <span class="px-3 text-black-50">/</span>
               <div class="d-flex align-items-center">
-                <i class="bi-play-circle"></i> <span class="ps-2">{{job.jop_type}}</span>
+                <i class="bi-play-circle"></i> <span class="ps-2">{{ job.jop_type }}</span>
               </div>
             </div>
             <hr>
-            <a href="/Home/jobDetails/{{job.name}}" class="readmore stretched-link"><span>Read More</span><i
-                class="bi bi-arrow-right"></i></a>
+            <a href="/Home/jobDetails/{{ job.name }}" class="readmore stretched-link">
+              <span>Read More</span><i class="bi bi-arrow-right"></i>
+            </a>
           </div>
-
         </div>
       </div>
-
-      <!-- End post item -->
       {% endfor %}
-
+      <!-- End post item -->
     </div>
-
   </div>
 
+  <!-- Show "Browse More Jobs" button if there are more than 3 available jobs -->
   {% if Job_info|length >3 %}
   <div class="container-xxl py-5" py-5>
 
@@ -55,13 +59,21 @@
 
   {% endif %}
 </section>
+
 <style>
+  /* Ensure consistent image size and aspect ratio */
+  .job-image {
+    width: 100%; /* Ensure the image takes up the full width of its container */
+    height: 200px; /* Set a fixed height (adjust as needed) */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    object-position: center; /* Centers the image within the container */
+  }
+
   .sticky-apply {
     position: relative;
     bottom: 0;
     left: 0;
     width: 100%;
-    /* background: #fff; */
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
     padding: 1rem;
     text-align: center;
@@ -70,7 +82,6 @@
 
   .btn-apply {
     background: #3498db;
-    /* Blue button */
     color: #fff;
     padding: 0.75rem 2rem;
     border-radius: 5px;
@@ -81,6 +92,5 @@
 
   .btn-apply:hover {
     background: #2980b9;
-    /* Darker blue on hover */
   }
-</style>*/
+</style>

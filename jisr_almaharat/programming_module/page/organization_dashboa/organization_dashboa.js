@@ -21,6 +21,7 @@ frappe.pages['organization-dashboa'].on_page_load = function (wrapper) {
                         <li><a href="#" class="menu-item" id="trainings-btn">Trainings</a></li>
                         <li><a href="#" class="menu-item" id="applications-btn">Applications</a></li>
                         <li><a href="#" class="menu-item" id="notification-btn">Notifcation</a></li>
+                        <li><a href="/Home/index" class="menu-item" id="home-btn">Home</a></li>
                     </ul>
                 </nav>
             </aside>
@@ -103,7 +104,7 @@ frappe.pages['organization-dashboa'].on_page_load = function (wrapper) {
             method: 'frappe.client.get_list',
             args: {
                 doctype: 'Job',
-                fields: ['name', 'jop_title', 'posting_date', 'jop_description']
+                fields: ['name', 'jop_title', 'posting_date', 'jop_description', 'creation']
             },
             callback: function (response) {
                 let jobs = response.message || [];
@@ -118,8 +119,8 @@ frappe.pages['organization-dashboa'].on_page_load = function (wrapper) {
                 if (jobs.length === 0) {
                     $('#job-list').append('<li class="list-group-item text-muted">No jobs posted yet.</li>');
                 } else {
-                    // Sort the jobs by posting date in descending order
-                    jobs.sort((a, b) => new Date(b.posting_date) - new Date(a.posting_date));
+                    // to sort jobs by creation date in descending order
+                    jobs.sort((a, b) => new Date(b.creation) - new Date(a.creation));
                 
                     jobs.forEach(job => {
                         $('#job-list').append(`
@@ -172,7 +173,7 @@ frappe.pages['organization-dashboa'].on_page_load = function (wrapper) {
             method: 'frappe.client.get_list',
             args: {
                 doctype: 'Training',
-                fields: ['name', 'training_title', 'training_post_date']
+                fields: ['name', 'training_title', 'training_post_date', 'creation']
             },
             callback: function (response) {
                 let trainings = response.message || [];
@@ -188,7 +189,7 @@ frappe.pages['organization-dashboa'].on_page_load = function (wrapper) {
                     $('#training-list').append('<li class="list-group-item text-muted">No trainings posted yet.</li>');
                 } else {
                     // Sort the trainings by posting date in descending order
-                    trainings.sort((a, b) => new Date(b.training_post_date) - new Date(a.training_post_date));
+                    trainings.sort((a, b) => new Date(b.creation) - new Date(a.creation));
                     trainings.forEach(training => {
                         $('#training-list').append(`
                             <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -239,7 +240,7 @@ function loadApplications() {
         method: 'frappe.client.get_list',
         args: {
             doctype: 'Application',
-            fields: ['name', 'kind', 'job_name', 'training_name', 'applicant_name']
+            fields: ['name', 'kind', 'job_name', 'training_name', 'applicant_name', 'creation']
         },
         callback: function (response) {
             let applications = response.message || [];
@@ -254,7 +255,9 @@ function loadApplications() {
             if (applications.length === 0) {
                 $('#application-list').append('<li class="list-group-item text-muted">No applications found.</li>');
             } else {
-                applications.reverse().forEach(app => {
+                // to sort applications by creation date 
+                 applications.sort((a, b) => new Date(b.creation) - new Date(a.creation));
+                applications.forEach(app => {
                     $('#application-list').append(`
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <div>
@@ -304,7 +307,7 @@ $('#applicationCard').click(loadApplications);
     method: 'frappe.client.get_list',
     args: {
       doctype: 'Application',
-      fields: ['name', 'applicant_name', 'kind', 'organization_name','job_name','training_name'], // Include organization_name
+      fields: ['name', 'applicant_name', 'kind', 'organization_name','job_name','training_name', 'creation'], // Include organization_name
       filters: {
         organization_name: frappe.session.user_fullname // Filter by current organization
       }
@@ -321,8 +324,9 @@ $('#applicationCard').click(loadApplications);
       if (applications.length === 0) {
         $('#application-list').append('<li class="list-group-item text-muted">No Notification found.</li>');
       } else {
-        
-        applications.reverse().forEach(app => {
+        // to sort applications by creation date 
+        applications.sort((a, b) => new Date(b.creation) - new Date(a.creation));
+        applications.forEach(app => {
           $('#application-list').append(`
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <div>

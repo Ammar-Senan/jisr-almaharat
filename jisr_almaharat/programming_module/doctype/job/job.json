@@ -23,6 +23,7 @@
   "aplication_deadline",
   "jop_location",
   "salary_range",
+  "image",
   "list_of_required_section",
   "required_skills",
   "is_published",
@@ -80,10 +81,8 @@
   {
    "fieldname": "posting_date",
    "fieldtype": "Date",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
    "label": "Posting Date",
-   "reqd": 1
+   "read_only": 1
   },
   {
    "fieldname": "jop_type",
@@ -108,8 +107,10 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Status",
-   "options": "Available\nClosed"
+   "options": "Available\nClosed",
+   "read_only": 1
   },
   {
    "fieldname": "aplication_deadline",
@@ -158,15 +159,19 @@
    "fieldname": "job_categories",
    "fieldtype": "Select",
    "label": "Job Categories",
-   "options": "Marketing\nCustomer service\nHuman Resource\nProject Managment\nBusuness Development\nSeals and comunication\nTeaching and Education",
-   "reqd": 1
+   "options": "Marketing\nCustomer service\nHuman Resource\nProject Managment\nBusuness Development\nSeals and comunication\nTeaching and Education"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Image"
   }
  ],
  "has_web_view": 1,
  "index_web_pages_for_search": 1,
  "is_published_field": "is_published",
  "links": [],
- "modified": "2025-02-15 21:43:29.130746",
+ "modified": "2025-03-16 03:14:48.158838",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Job",

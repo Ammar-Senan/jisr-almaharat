@@ -18,12 +18,21 @@
   "applicant_name",
   "phone",
   "email",
+  "address",
+  "educational_section",
+  "degree",
+  "major_of_study",
+  "graduation_year",
+  "work_experience_section",
+  "company_name_that_you_worked_in",
+  "your_position_at_work",
+  "attachments_section",
   "cv",
   "amended_from"
  ],
  "fields": [
   {
-   "fetch_from": ".",
+   "fetch_from": "applicant_name.",
    "fieldname": "email",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -103,7 +112,7 @@
    "label": "Organization Information"
   },
   {
-   "fetch_from": "job_name.organization_name",
+   "fetch_from": ".organization_name",
    "fieldname": "organization_name",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -111,17 +120,64 @@
    "options": "Organization"
   },
   {
-   "fetch_from": "job_name.organization_email",
+   "fetch_from": ".organization_email",
    "fieldname": "organization_email",
    "fieldtype": "Data",
    "label": "Organization Email",
    "options": "Email"
+  },
+  {
+   "fetch_from": "applicant_name.address",
+   "fieldname": "address",
+   "fieldtype": "Data",
+   "label": "Address"
+  },
+  {
+   "fieldname": "educational_section",
+   "fieldtype": "Section Break",
+   "label": "Educational"
+  },
+  {
+   "fieldname": "degree",
+   "fieldtype": "Select",
+   "label": "Degree",
+   "options": "High school\nDiploma\nBachelor's\nMaster"
+  },
+  {
+   "fieldname": "major_of_study",
+   "fieldtype": "Data",
+   "label": "Major of study"
+  },
+  {
+   "fieldname": "graduation_year",
+   "fieldtype": "Data",
+   "label": "Graduation year"
+  },
+  {
+   "fieldname": "work_experience_section",
+   "fieldtype": "Section Break",
+   "label": "Work Experience"
+  },
+  {
+   "fieldname": "company_name_that_you_worked_in",
+   "fieldtype": "Data",
+   "label": "Company Name That you worked in"
+  },
+  {
+   "fieldname": "your_position_at_work",
+   "fieldtype": "Data",
+   "label": "Your position at work"
+  },
+  {
+   "fieldname": "attachments_section",
+   "fieldtype": "Section Break",
+   "label": "Attachments"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-03-11 02:03:45.633941",
+ "modified": "2025-03-16 22:32:07.306846",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Application",
