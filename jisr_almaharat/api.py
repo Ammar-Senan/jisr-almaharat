@@ -53,6 +53,7 @@ def assign_role(email, user_type):
     frappe.clear_cache(user=email)
 
     return f"Role  has been assigned based on user type : {user_type}."
+
     
 # @frappe.whitelist()  
 # def get_context(job_id=None):
