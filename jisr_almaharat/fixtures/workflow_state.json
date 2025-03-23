@@ -20,6 +20,15 @@
  {
   "docstatus": 0,
   "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2025-02-15 01:01:43.008279",
+  "name": "Cancel",
+  "style": "",
+  "workflow_state_name": "Cancel"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
   "icon": "remove",
   "modified": "2025-01-02 02:53:27.671282",
   "name": "Rejected",
@@ -43,14 +52,5 @@
   "name": "Approval Pending",
   "style": "",
   "workflow_state_name": "Approval Pending"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2025-02-15 01:01:43.008279",
-  "name": "Cancel",
-  "style": "",
-  "workflow_state_name": "Cancel"
  }
 ]
