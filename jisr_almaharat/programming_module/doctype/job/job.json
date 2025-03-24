@@ -9,6 +9,7 @@
   "organization_informtation",
   "organization_name",
   "organization_site",
+  "organization_image",
   "column_break_otgk",
   "organization_email",
   "organization_location",
@@ -165,13 +166,20 @@
    "fieldname": "image",
    "fieldtype": "Attach Image",
    "label": "Image"
+  },
+  {
+   "fetch_from": "organization_name.logo",
+   "fieldname": "organization_image",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Organization image"
   }
  ],
  "has_web_view": 1,
  "index_web_pages_for_search": 1,
  "is_published_field": "is_published",
  "links": [],
- "modified": "2025-03-16 03:14:48.158838",
+ "modified": "2025-03-18 04:20:02.903648",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Job",

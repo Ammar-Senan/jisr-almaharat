@@ -1,20 +1,22 @@
 import frappe # type: ignore
-from frappe.model.document import Document # type: ignore
-@frappe.whitelist(allow_guest=True)
-def new_book(book_name, au_name):
-    # return "in function"
-    try:    
-        book = frappe.new_doc("Books")
-        book.book_name = book_name
-        book.au_name = au_name
-        book.insert()   
-        frappe.db.commit()
-        
-        return {"success": True, "message": "Success to create book"}
-    except Exception as e:
-        frappe.log_error(frappe.get_traceback(), "Failed to create book")
-        return {"success": False, "message": str(e)}
+
+#  this function to be return all job to mobile app  via API
+@frappe.whitelist(allow_guest=True)    
+# def alljob():
+#     # print=("\n\n\n\n\nfrappe.form_dict.docname\n\n\n")
+#     Job_info=frappe.get_all("Job",fields=["name",
+#     "jop_title","aplication_deadline","organization_name","jop_type","jop_description","image"])
     
+#     print(f"\n\n\n\n\n\n{Job_info}\n\n\n\n\n")
+#     return Job_info
+def alljob():
+    jobs = frappe.get_all("Job", fields=["name", "jop_title", "aplication_deadline", "organization_name", "jop_type", "jop_description", "image"])
+    for job in jobs:
+        job["image"] = frappe.utils.get_url(job["image"])
+    # print(f"\n\n\n\n\n\n{job}\n\n\n\n\n")
+    #   # تحويل المسار النسبي إلى رابط URL كامل
+    return jobs
+
 
 @frappe.whitelist()  # Allow this function to be accessed via API
 def assign_role(email, user_type):
