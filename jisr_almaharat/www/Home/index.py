@@ -27,6 +27,6 @@ def get_context(context):
     )
 
     # Add user roles to context
-    context.user_data = get_user_roles()
+    context.user_data = get_user_roles()  
     
     return context

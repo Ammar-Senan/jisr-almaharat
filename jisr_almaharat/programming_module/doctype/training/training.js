@@ -26,22 +26,8 @@ frappe.ui.form.on("Training", {
         
                 }});
                 
-                    
-        
+                  
                 // to set the posting date to be the current date
                 frm.set_value('training_post_date', frappe.datetime.get_today());
-        
-                // to change the status value to be Closed if the application deadline is passed
-                let toDay = frappe.datetime.get_today();
-                let deadline = frm.doc.aplication_deadline;
-                let create = frm.doc.creation;
-        
-                if(create){
-                    if (toDay >= deadline) {
-                        frm.set_value('training_status', 'Close');
-                        frappe.msgprint('This Training is done');
-                        frm.save();                
-                    }
-                }
 },
 });

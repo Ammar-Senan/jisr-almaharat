@@ -26,11 +26,11 @@
       and if the user_data.roles = User Role the href change to /app/user-dashboard in janja-->
     {% set user_data = user_data %}
     <a class="btn-getstarted flex-md-shrink-0" 
-    href="{% if 'Administrator' in user_data.roles %}/app/admin-dashboard
+    href="{% if 'System Manager' in user_data.roles %}/app/admin-dashboard
       {% elif 'Organization Role' in user_data.roles %}/app/organization-dashboa
       {% elif 'User Role' in user_data.roles %}/app/user-dashboard
       {% endif %}"
-    id="profileBtn" style="display: none; {% if not ('Administrator' in user_data.roles or 'Organization Role' in user_data.roles or 'User Role' in user_data.roles) %}background: gray;{% endif %}">
+    id="profileBtn" style="display: none; ">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle"
         viewBox="0 0 16 16">
         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
