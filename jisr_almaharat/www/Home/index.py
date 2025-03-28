@@ -16,7 +16,7 @@ def get_context(context):
     context.Job_info = frappe.get_all(
         "Job",
         fields=["name", "jop_title", "posting_date", "aplication_deadline",
-                "organization_name", "jop_type", "image", "status", "creation"]
+                "organization_name", "jop_type", "image", "status", "job_categories", "creation"]
     )
 
     context.Training_info = frappe.get_all(
