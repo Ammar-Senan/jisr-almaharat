@@ -30,7 +30,7 @@ def assign_role(email, user_type):
     # Role mapping based on selected user type
     role_map = {
         "Regular User": "User Role",
-        "Company": "Organization Role"
+        "Company": " "
     }
 
     role_name = role_map.get(user_type)
@@ -55,6 +55,7 @@ def assign_role(email, user_type):
     frappe.clear_cache(user=email)
 
     return f"Role  has been assigned based on user type : {user_type}."
+
     
 # @frappe.whitelist()  
 # def get_context(job_id=None):

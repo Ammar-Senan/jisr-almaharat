@@ -26,22 +26,7 @@ frappe.ui.form.on("Job", {
 
         }});
         
-            
-
         // to set the posting date to be the current date
         frm.set_value('posting_date', frappe.datetime.get_today());
-
-        // to change the status value to be Closed if the application deadline is passed
-        let toDay = frappe.datetime.get_today();
-        let deadline = frm.doc.aplication_deadline;
-        let create = frm.doc.creation;
-
-        if(create){
-            if (toDay >= deadline) {
-                frm.set_value('status', 'Closed');
-                frappe.msgprint('This job is closed');
-                frm.save();                
-            }
-        }
 	},
 });

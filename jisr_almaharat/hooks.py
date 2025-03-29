@@ -216,15 +216,9 @@ website_route_rules = routes
 
 
 scheduler_events = {
- 
-	# "daily": [
-	# 	"jisr_almaharat.tasks.daily"
-	# ],jisr_almaharat/jisr_almaharat/programming_module/doctype/job/job.py"
 	"hourly": [
-		"jisr_almaharat.jisr_almaharat.programming_module.task.update_status"
+		"jisr_almaharat.task.update_status"
 	],
- 
- 
 }
 # Testing
 # -------

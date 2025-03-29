@@ -14,20 +14,30 @@
       </ul>
       <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
     </nav>
-
+    
+    
+    
     <!-- أزرار تسجيل الدخول والتسجيل -->
     <a id="loginBtn" class="btn-getstarted flex-md-shrink-0" href="/login#login">LOGIN</a>
     <a id="registerBtn" class="btn-getstarted flex-md-shrink-0" href="/login#signup">Register</a>
 
     <!-- "Profile" -->
-    <a class="btn-getstarted flex-md-shrink-0" href="/app/organization-dashboa" id="profileBtn" style="display: none;">
+     <!-- if the user_data.roles = Administrator href change to /app/admin-dashboard and if the user_data.roles =Organization Role the href change to /app/organization-dashboa
+      and if the user_data.roles = User Role the href change to /app/user-dashboard in janja-->
+    {% set user_data = user_data %}
+    <a class="btn-getstarted flex-md-shrink-0" 
+    href="{% if 'System Manager' in user_data.roles %}/app/admin-dashboard
+      {% elif 'Organization Role' in user_data.roles %}/app/organization-dashboa
+      {% elif 'User Role' in user_data.roles %}/app/user-dashboard
+      {% endif %}"
+    id="profileBtn" style="display: none; ">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle"
         viewBox="0 0 16 16">
         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
         <path fill-rule="evenodd"
           d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
       </svg>
-      <span id="username">Profile</span>
+      <span>Profile</span>
     </a>
 
   </div>
@@ -95,4 +105,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+//////////////////////////////////////////////
+
+
+
 </script>

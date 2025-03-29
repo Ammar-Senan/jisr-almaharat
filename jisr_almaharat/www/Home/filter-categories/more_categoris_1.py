@@ -12,8 +12,7 @@ def get_user_roles():
     return {"user": user, "roles": roles}
 
 def get_context(context):
-    context.oline=frappe.get_all("Training",
-    fields=["name","training_title","about_training","aplication_deadline","training_post_date","organization_name","training_pattren","location", "image", "training_status", "creation"])
+    context.Categories=frappe.get_all("Job",
+    fields=["name","jop_title","aplication_deadline","organization_name","jop_type","job_categories","jop_location"])
     context.user_data = get_user_roles()  
     return context
- 
