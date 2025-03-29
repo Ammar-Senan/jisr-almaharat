@@ -51,7 +51,7 @@
    "fieldname": "specialization",
    "fieldtype": "Select",
    "label": "Specialization",
-   "options": "Technology\nEducational\nMedical\nMechanic\nArchitectural\nAgricultural"
+   "options": "Technology\nEducational\nMedical\nMechanic\nArchitectural\nAgricultural\nOther"
   },
   {
    "fieldname": "address",
@@ -71,7 +71,7 @@
    "link_fieldname": "applicant_name"
   }
  ],
- "modified": "2025-03-11 01:47:03.117814",
+ "modified": "2025-03-27 23:20:36.132347",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "User1",

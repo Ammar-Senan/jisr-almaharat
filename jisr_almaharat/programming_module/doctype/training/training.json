@@ -22,6 +22,7 @@
   "location",
   "training_status",
   "aplication_deadline",
+  "training_categories",
   "description_of_training_section",
   "about_training",
   "list_of_required_section",
@@ -142,11 +143,17 @@
    "fieldname": "image",
    "fieldtype": "Attach Image",
    "label": "Image"
+  },
+  {
+   "fieldname": "training_categories",
+   "fieldtype": "Select",
+   "label": "Training Categories",
+   "options": "Technology\nEducational\nMedical\nMechanic\nArchitectural\nAgricultural\nOther"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-16 03:16:38.734030",
+ "modified": "2025-03-28 01:34:10.064049",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Training",

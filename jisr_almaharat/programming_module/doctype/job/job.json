@@ -160,7 +160,7 @@
    "fieldname": "job_categories",
    "fieldtype": "Select",
    "label": "Job Categories",
-   "options": "Marketing\nCustomer service\nHuman Resource\nProject Managment\nBusuness Development\nSeals and comunication\nTeaching and Education\nDesing and creative",
+   "options": "Technology\nEducational\nMedical\nMechanic\nArchitectural\nAgricultural\nOther",
    "reqd": 1
   },
   {
@@ -180,7 +180,7 @@
  "index_web_pages_for_search": 1,
  "is_published_field": "is_published",
  "links": [],
- "modified": "2025-03-22 07:49:54.714723",
+ "modified": "2025-03-27 23:20:42.829784",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Job",
