@@ -1,21 +1,41 @@
 import frappe # type: ignore
-
-#  this function to be return all job to mobile app  via API
-@frappe.whitelist(allow_guest=True)    
-# def alljob():
-#     # print=("\n\n\n\n\nfrappe.form_dict.docname\n\n\n")
-#     Job_info=frappe.get_all("Job",fields=["name",
-#     "jop_title","aplication_deadline","organization_name","jop_type","jop_description","image"])
+from frappe.model.document import Document # type: ignore
     
-#     print(f"\n\n\n\n\n\n{Job_info}\n\n\n\n\n")
-#     return Job_info
+@frappe.whitelist(allow_guest=True)    
 def alljob():
-    jobs = frappe.get_all("Job", fields=["name", "jop_title", "aplication_deadline", "organization_name", "jop_type", "jop_description", "image"])
+    jobs = frappe.get_all("Job", 
+            fields=["name", "jop_title", "aplication_deadline", 
+                "organization_name", "jop_type","jop_description", "image"])  # Include image field
+            
+        # Convert relative image paths to full URLs
     for job in jobs:
-        job["image"] = frappe.utils.get_url(job["image"])
-    # print(f"\n\n\n\n\n\n{job}\n\n\n\n\n")
-    #   # تحويل المسار النسبي إلى رابط URL كامل
-    return jobs
+            if job.get("image"):
+                job["image"] = frappe.utils.get_url(job["image"])
+                
+    return  jobs
+
+
+@frappe.whitelist(allow_guest=True)
+def getTrainingInfo():
+    # print=("\n\n\n\n\nfrappe.form_dict.docname\n\n\n")
+    # Job_info=frappe.get_all("Training", fields=["name", "training_title", "aplication_deadline", "organization_name",
+    #             "training_pattren", "about_training", "training_post_date",
+    #              "training_status", "creation"])
+    # # job =  frappe.get_all("Job")
+    # # job  = frappe.get_doc("Books",frappe.form_dict.docname)
+    # return Job_info
+    jobs = frappe.get_all("Training", 
+           fields=["name", "training_title", "aplication_deadline", "organization_name",
+                "training_pattren", "about_training", "training_post_date",
+                 "training_status", "creation","image"])
+    #  # Include image field
+            
+        # Convert relative image paths to full URLs
+    for job in jobs:
+            if job.get("image"):
+                job["image"] = frappe.utils.get_url(job["image"])
+                
+    return  jobs
 
 
 @frappe.whitelist()  # Allow this function to be accessed via API
@@ -30,7 +50,7 @@ def assign_role(email, user_type):
     # Role mapping based on selected user type
     role_map = {
         "Regular User": "User Role",
-        "Company": " "
+        "Company": "Organization Role"
     }
 
     role_name = role_map.get(user_type)
@@ -46,6 +66,7 @@ def assign_role(email, user_type):
     # Assign the role to the user
     user_doc.append("roles", {"role": role_name})
     user_doc.save(ignore_permissions=True)
+    # user_doc.enabled = 1
     frappe.db.commit()
 
     # Log the role assignment instead of using print()
@@ -55,7 +76,6 @@ def assign_role(email, user_type):
     frappe.clear_cache(user=email)
 
     return f"Role  has been assigned based on user type : {user_type}."
-
     
 # @frappe.whitelist()  
 # def get_context(job_id=None):
