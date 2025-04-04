@@ -51,7 +51,7 @@
                         <div id="tab-1" class="tab-pane fade show p-0 active">
                             <!-- ////////////////    training details  //////////////////////  -->
                             {% for training in oline %}
-                                {% if training.training_status == 'Available' %}
+                                {% if training.training_pattren == 'Online' and training.training_status == 'Available' %}
                                     <div class="job-item p-4 mb-4">
                                         <div class="row g-4">
                                             <div class="col-sm-12 col-md-8 d-flex align-items-center">

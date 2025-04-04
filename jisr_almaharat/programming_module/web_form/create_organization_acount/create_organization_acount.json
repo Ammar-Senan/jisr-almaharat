@@ -6,7 +6,7 @@
  "allow_multiple": 0,
  "allow_print": 0,
  "anonymous": 0,
- "apply_document_permissions": 0,
+ "apply_document_permissions": 1,
  "button_label": "Save",
  "condition_json": "[]",
  "creation": "2025-01-04 18:23:44.249915",
@@ -18,7 +18,7 @@
  "list_columns": [],
  "login_required": 0,
  "max_attachment_size": 0,
- "modified": "2025-02-05 17:24:04.235825",
+ "modified": "2025-04-04 23:01:31.773108",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "create-organization-acount",
@@ -28,6 +28,8 @@
  "show_attachments": 0,
  "show_list": 0,
  "show_sidebar": 0,
+ "success_title": "Your Organization Created Successfully",
+ "success_url": "/Home/index",
  "title": "Create Organization Acount",
  "web_form_fields": [
   {
@@ -50,8 +52,7 @@
    "label": "Organization Name",
    "max_length": 0,
    "max_value": 0,
-   "options": "",
-   "read_only": 0,
+   "read_only": 1,
    "reqd": 1,
    "show_in_filter": 0
   },
@@ -63,19 +64,8 @@
    "label": "Email",
    "max_length": 0,
    "max_value": 0,
-   "read_only": 0,
-   "reqd": 1,
-   "show_in_filter": 0
-  },
-  {
-   "allow_read_on_all_link_options": 0,
-   "fieldname": "website",
-   "fieldtype": "Data",
-   "hidden": 0,
-   "label": "Website",
-   "max_length": 0,
-   "max_value": 0,
-   "read_only": 0,
+   "options": "Email",
+   "read_only": 1,
    "reqd": 1,
    "show_in_filter": 0
   },
@@ -85,6 +75,18 @@
    "fieldtype": "Phone",
    "hidden": 0,
    "label": "Phone",
+   "max_length": 0,
+   "max_value": 0,
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
+   "fieldname": "logo",
+   "fieldtype": "Attach Image",
+   "hidden": 0,
+   "label": "Logo",
    "max_length": 0,
    "max_value": 0,
    "read_only": 0,
@@ -123,20 +125,20 @@
    "label": "Registration date",
    "max_length": 0,
    "max_value": 0,
-   "read_only": 0,
-   "reqd": 1,
+   "read_only": 1,
+   "reqd": 0,
    "show_in_filter": 0
   },
   {
    "allow_read_on_all_link_options": 0,
-   "fieldname": "logo",
-   "fieldtype": "Attach Image",
+   "fieldname": "website",
+   "fieldtype": "Data",
    "hidden": 0,
-   "label": "Logo",
+   "label": "Website",
    "max_length": 0,
    "max_value": 0,
    "read_only": 0,
-   "reqd": 0,
+   "reqd": 1,
    "show_in_filter": 0
   },
   {
@@ -154,7 +156,7 @@
   {
    "allow_read_on_all_link_options": 0,
    "fieldname": "about_organization",
-   "fieldtype": "Text",
+   "fieldtype": "Small Text",
    "hidden": 0,
    "label": "About Organization",
    "max_length": 0,
@@ -184,7 +186,7 @@
    "max_length": 0,
    "max_value": 0,
    "read_only": 0,
-   "reqd": 0,
+   "reqd": 1,
    "show_in_filter": 0
   }
  ]

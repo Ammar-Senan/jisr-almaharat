@@ -173,7 +173,7 @@ function loadUser1() {
         method: 'frappe.client.get_list',
         args: {
             doctype: 'User1',
-            fields: ['name','name1', 'email']
+            fields: ['name','name1', 'email', 'creation']
         },
         callback: function (response) {
             let users = response.message || [];
@@ -188,6 +188,7 @@ function loadUser1() {
             if (users.length === 0) {
                 $('#user-list').append('<li class="list-group-item text-muted">No users posted yet.</li>');
             } else {
+                users.sort((a, b) => new Date(b.creation) - new Date(a.creation));
                 users.forEach(user => {
                     $('#user-list').append(`
                         <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -241,7 +242,7 @@ function loadOrganizations() {
         method: 'frappe.client.get_list',
         args: {
             doctype: 'Organization',
-            fields: ['name', 'organization_name', 'industry', 'about_organization']
+            fields: ['name', 'organization_name', 'industry', 'about_organization', 'workflow_state', 'creation']
         },
         callback: function (response) {
             let organizations = response.message || [];
@@ -256,10 +257,12 @@ function loadOrganizations() {
             if (organizations.length === 0) {
                 $('#organization-list').append('<li class="list-group-item text-muted">No organizations posted yet.</li>');
             } else {
+                organizations.sort((a, b) => new Date(b.creation) - new Date(a.creation));
                 organizations.forEach(org => {
                     $('#organization-list').append(`
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <div>
+                                <small style="color:#527a7a;">${org.workflow_state}</small><br>
                                 <strong>${org.organization_name}</strong>
                                 <small class="text-muted">(Industry: ${org.industry || 'Not specified'})</small>
                                 <p>${org.about_organization || 'No description available.'}</p>
@@ -308,7 +311,7 @@ function loadJobs() {
         method: 'frappe.client.get_list',
         args: {
             doctype: 'Job',
-            fields: ['name', 'jop_title', 'posting_date', 'jop_description']
+            fields: ['name', 'organization_name', 'jop_title', 'posting_date', 'jop_description', 'creation']
         },
         callback: function (response) {
             let jobs = response.message || [];
@@ -323,12 +326,13 @@ function loadJobs() {
             if (jobs.length === 0) {
                 $('#job-list').append('<li class="list-group-item text-muted">No jobs posted yet.</li>');
             } else {
+                jobs.sort((a, b) => new Date(b.creation) - new Date(a.creation));
                 jobs.forEach(job => {
                     $('#job-list').append(`
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <div>
                                 <strong>${job.jop_title}</strong>
-                                <small class="text-muted">(Posted on: ${job.posting_date})</small>
+                                <small class="text-muted">(Posted on: ${job.posting_date} and by ${job.organization_name})</small>
                                 <p>${job.jop_description || 'No description available.'}</p>
                             </div>
                             <div>
@@ -377,7 +381,7 @@ function loadTrainings(){
         method: 'frappe.client.get_list',
         args: {
             doctype: 'Training',
-            fields: ['name', 'training_title', 'training_post_date']
+            fields: ['name', 'organization_name','training_title', 'training_post_date', 'creation']
         },
         callback: function (response) {
             let trainings = response.message || [];
@@ -392,12 +396,13 @@ function loadTrainings(){
             if (trainings.length === 0) {
                 $('#training-list').append('<li class="list-group-item text-muted">No trainings posted yet.</li>');
             } else {
+                trainings.sort((a, b) => new Date(b.creation) - new Date(a.creation));
                 trainings.forEach(training => {
                     $('#training-list').append(`
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <div>
                                 <strong>${training.training_title}</strong>
-                                <small class="text-muted">(Posted on: ${training.training_post_date})</small>
+                                <small class="text-muted">(Posted on: ${training.training_post_date} and by ${training.organization_name})</small>
                                 <p>${training.about_training || 'No description available.'}</p>
                             </div>
                             <div>
@@ -446,7 +451,7 @@ function loadApplications() {
         method: 'frappe.client.get_list',
         args: {
             doctype: 'Application',
-            fields: ['name', 'kind', 'job_name', 'training_name', 'applicant_name']
+            fields: ['name', 'kind', 'job_name', 'training_name', 'applicant_name', 'creation'],
         },
         callback: function (response) {
             let applications = response.message || [];
@@ -461,7 +466,8 @@ function loadApplications() {
             if (applications.length === 0) {
                 $('#application-list').append('<li class="list-group-item text-muted">No applications found.</li>');
             } else {
-                applications.reverse().forEach(app => {
+                applications.sort((a, b) => new Date(b.creation) - new Date(a.creation));
+                applications.forEach(app => {
                     $('#application-list').append(`
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <div>

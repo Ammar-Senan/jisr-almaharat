@@ -85,6 +85,28 @@ frappe.ready(function() {
 
 	}});
 
+	//discard btn
+	$(".discard-btn").off("click").on("click", function (event) {
+        event.preventDefault(); // Prevent default discard behavior
+
+        //frappe.web_form.reset(); // Reset the form fields
+        window.location.href = "/Home/index"; // Redirect to the admin dashboard
+    });	
+
+	//Save btn
+
+
+// ////////////////// The Form Style ////////////////////////
+	// by element
+	document.querySelector("body").style.backgroundColor = "#E6F0FF";
+	// by class
+	document.querySelector(".web-form-header").style.backgroundColor = "#F8FAFC";
+	document.querySelector(".web-form").style.backgroundColor = "#F8FAFC";
+
+	// document.querySelector(".flex ").style.backgroundColor = "orange";
+	document.querySelector(".submit-btn").style.backgroundColor = "#000080";
+	document.querySelector(".web-footer").style.display = "none";
+
 	
 
 })

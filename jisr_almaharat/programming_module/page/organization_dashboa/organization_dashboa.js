@@ -57,12 +57,16 @@ frappe.pages['organization-dashboa'].on_page_load = function (wrapper) {
     // Load organization profile
     const loadoOrganizationProfile = () => {
         $('#organization-profile').html('');
-
+        
+        let userEmail = frappe.session.user_email;
         frappe.call({
             method: 'frappe.client.get_list',
             args: {
                 doctype: 'Organization',
-                fields: ['name', 'organization_name', 'registration_date', 'logo', 'email', 'website', 'about_organization', 'location']
+                fields: ['name', 'organization_name', 'registration_date', 'logo', 'email', 'website', 'about_organization', 'location'],
+                filters: {
+                    email: userEmail
+                  }
             },
             callback: function (response) {
                 let org = response.message[0] || {};
@@ -240,14 +244,16 @@ function loadApplications() {
         method: 'frappe.client.get_list',
         args: {
             doctype: 'Application',
-            fields: ['name', 'kind', 'job_name', 'training_name', 'applicant_name', 'creation']
+            fields: ['name', 'kind', 'job_name', 'training_name', 'applicant_name', 'creation'],
+            filters: {
+                organization_name: frappe.session.user_fullname // Filter by current organization
+              }
         },
         callback: function (response) {
             let applications = response.message || [];
             $('#content-section').html(`
                 <div>
                     <h3>Applications</h3>
-                    <button class="btn btn-primary" id="add-application-btn">Add New Application</button>
                     <ul id="application-list" class="list-group mt-3"></ul>
                 </div>
             `);
@@ -273,7 +279,7 @@ function loadApplications() {
                 });
             }
 
-            $('#add-application-btn').click(() => window.location.href = '/add-application');
+         
 
             $('.edit-application').click(function () {
                 frappe.set_route('Form', 'Application', $(this).data('name'));

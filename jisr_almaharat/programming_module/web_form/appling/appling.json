@@ -19,7 +19,7 @@
  "list_columns": [],
  "login_required": 0,
  "max_attachment_size": 0,
- "modified": "2025-03-17 00:02:29.146313",
+ "modified": "2025-04-05 00:18:33.332301",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "appling",
@@ -30,7 +30,7 @@
  "show_list": 0,
  "show_sidebar": 0,
  "success_title": "You application send",
- "success_url": "/app/user-dashboard",
+ "success_url": "/Home/index",
  "title": "Appling",
  "web_form_fields": [
   {
@@ -122,19 +122,6 @@
   },
   {
    "allow_read_on_all_link_options": 0,
-   "fieldname": "training_name",
-   "fieldtype": "Link",
-   "hidden": 0,
-   "label": "Training Name",
-   "max_length": 0,
-   "max_value": 0,
-   "options": "Training",
-   "read_only": 0,
-   "reqd": 0,
-   "show_in_filter": 0
-  },
-  {
-   "allow_read_on_all_link_options": 0,
    "fieldname": "applicant_information_section",
    "fieldtype": "Section Break",
    "hidden": 0,
@@ -210,7 +197,6 @@
   },
   {
    "allow_read_on_all_link_options": 0,
-   "default": "",
    "fieldname": "degree",
    "fieldtype": "Select",
    "hidden": 0,
@@ -237,7 +223,7 @@
   {
    "allow_read_on_all_link_options": 0,
    "fieldname": "graduation_year",
-   "fieldtype": "Data",
+   "fieldtype": "Int",
    "hidden": 0,
    "label": "Graduation year",
    "max_length": 0,

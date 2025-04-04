@@ -14,14 +14,14 @@
   "organization_email",
   "organization_location",
   "training_information_section",
-  "image",
   "training_title",
-  "training_pattren",
   "training_post_date",
+  "training_pattren",
+  "image",
   "column_break_swie",
-  "location",
   "training_status",
   "aplication_deadline",
+  "location",
   "training_categories",
   "description_of_training_section",
   "about_training",
@@ -88,7 +88,7 @@
   },
   {
    "fieldname": "about_training",
-   "fieldtype": "Text",
+   "fieldtype": "Small Text",
    "label": "About Training",
    "reqd": 1
   },
@@ -145,6 +145,7 @@
    "label": "Image"
   },
   {
+   "default": "Other",
    "fieldname": "training_categories",
    "fieldtype": "Select",
    "label": "Training Categories",
@@ -153,7 +154,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-28 01:34:10.064049",
+ "modified": "2025-04-04 17:24:19.078715",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Training",

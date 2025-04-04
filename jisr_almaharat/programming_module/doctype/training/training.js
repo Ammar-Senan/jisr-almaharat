@@ -5,7 +5,7 @@ frappe.ui.form.on("Training", {
 	refresh(frm) {
 
                 // to get the organization information from docType Organization by session
-                let userEmail = frappe.session.user;
+                let userEmail = frappe.session.user_email;
                 frappe.call({
                     method: 'frappe.client.get_list',
                     args: {
@@ -30,4 +30,12 @@ frappe.ui.form.on("Training", {
                 // to set the posting date to be the current date
                 frm.set_value('training_post_date', frappe.datetime.get_today());
 },
+
+  aplication_deadline(frm) {
+    if(frm.doc.aplication_deadline < frappe.datetime.get_today()) {
+      frm.set_value('aplication_deadline', '');
+      frappe.throw(__('Application deadline must be greater than today date'));
+    }
+   
+  }
 });

@@ -50,7 +50,7 @@ def assign_role(email, user_type):
     # Role mapping based on selected user type
     role_map = {
         "Regular User": "User Role",
-        "Company": "Organization Role"
+        "Company": "No Role"
     }
 
     role_name = role_map.get(user_type)

@@ -14,8 +14,8 @@ from jisr_almaharat.route import routes
 ###################### Start Fixtures for testing #################
 fixtures = [ 
 #add role  
-    {"doctype": "Role", "filters": [["name", "in", ["Organization Role", "User Role"]]]},
-    {"doctype": "Custom DocPerm", "filters": [["role", "in", ["Organization Role", "User Role"]]]},
+    {"doctype": "Role", "filters": [["name", "in", ["Organization Role", "User Role", "No Role"]]]},
+    {"doctype": "Custom DocPerm", "filters": [["role", "in", ["Organization Role", "User Role", "No Role"]]]},
 #add Workflow
     {"doctype": "Workflow", "filters": [["name", "in", ["Approval Organization", "Approval Application"]]]},
     {"doctype": "Workflow State"},

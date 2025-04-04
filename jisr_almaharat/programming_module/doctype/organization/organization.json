@@ -10,12 +10,12 @@
   "amended_from",
   "organization_name",
   "email",
-  "website",
   "phone",
+  "logo",
   "column_break_bqcd",
   "industry",
   "registration_date",
-  "logo",
+  "website",
   "section_break_xrdy",
   "about_organization",
   "locations_info_section",
@@ -30,6 +30,7 @@
   {
    "fieldname": "amended_from",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Amended From",
    "no_copy": 1,
    "options": "Organization",
@@ -47,12 +48,13 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Organization Name",
+   "read_only": 1,
    "reqd": 1,
    "unique": 1
   },
   {
    "fieldname": "about_organization",
-   "fieldtype": "Text",
+   "fieldtype": "Small Text",
    "in_list_view": 1,
    "label": "About Organization",
    "reqd": 1
@@ -63,6 +65,7 @@
    "in_list_view": 1,
    "label": "Email",
    "options": "Email",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -82,13 +85,14 @@
   {
    "fieldname": "location",
    "fieldtype": "Data",
-   "label": "Location"
+   "label": "Location",
+   "reqd": 1
   },
   {
    "fieldname": "registration_date",
    "fieldtype": "Date",
    "label": "Registration date",
-   "reqd": 1
+   "read_only": 1
   },
   {
    "fieldname": "section_break_xrdy",
@@ -126,7 +130,7 @@
    "link_fieldname": "organization_name"
   }
  ],
- "modified": "2025-03-04 01:34:00.716069",
+ "modified": "2025-04-04 22:55:54.134322",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Organization",

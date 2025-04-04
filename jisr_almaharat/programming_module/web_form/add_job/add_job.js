@@ -24,5 +24,38 @@ frappe.ready(function() {
 	frappe.web_form.set_value('posting_date', frappe.datetime.get_today());
 
 	
+	frappe.web_form.on("aplication_deadline", (field, value) => {
+		let today = frappe.datetime.get_today(); // Get today's date in YYYY-MM-DD format
+	
+		if (value && value < today) {
+			// Delay message to prevent multiple pop-ups
+			setTimeout(() => {
+				frappe.msgprint("The application deadline cannot be in the past.");
+			}, 200); 
+	
+			frappe.web_form.set_value("aplication_deadline", ""); // Reset the field
+		}
+	});
+
+	//discard btn
+	$(".discard-btn").off("click").on("click", function (event) {
+        event.preventDefault(); // Prevent default discard behavior
+
+        window.location.href = "/app/organization-dashboa"; // Redirect to the admin dashboard
+    });	
+	//Save btn
+
+
+// ////////////////// The Form Style ////////////////////////
+	// by element
+	document.querySelector("body").style.backgroundColor = "#E6F0FF";
+	// by class
+	document.querySelector(".web-form-header").style.backgroundColor = "#F8FAFC";
+	document.querySelector(".web-form").style.backgroundColor = "#F8FAFC";
+
+	// document.querySelector(".flex ").style.backgroundColor = "orange";
+	document.querySelector(".submit-btn").style.backgroundColor = "#000080";
+	document.querySelector(".web-footer").style.display = "none";
+
  
 });

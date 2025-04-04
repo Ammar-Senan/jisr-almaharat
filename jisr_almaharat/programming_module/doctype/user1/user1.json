@@ -7,12 +7,14 @@
  "engine": "InnoDB",
  "field_order": [
   "create_account_section",
-  "image",
   "name1",
-  "email",
-  "phone_number",
-  "specialization",
   "address",
+  "phone_number",
+  "image",
+  "column_break_nrfx",
+  "specialization",
+  "email",
+  "about_user_section",
   "about_me"
  ],
  "fields": [
@@ -21,6 +23,7 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Name",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -29,6 +32,7 @@
    "in_list_view": 1,
    "label": "Email",
    "options": "Email",
+   "read_only": 1,
    "reqd": 1,
    "unique": 1
   },
@@ -60,8 +64,17 @@
   },
   {
    "fieldname": "about_me",
-   "fieldtype": "Text",
+   "fieldtype": "Small Text",
    "label": "About Me"
+  },
+  {
+   "fieldname": "column_break_nrfx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "about_user_section",
+   "fieldtype": "Section Break",
+   "label": "About User"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -71,7 +84,7 @@
    "link_fieldname": "applicant_name"
   }
  ],
- "modified": "2025-03-27 23:20:36.132347",
+ "modified": "2025-04-04 22:58:13.820611",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "User1",

@@ -18,13 +18,14 @@
   "posting_date",
   "jop_type",
   "job_categories",
-  "jop_description",
+  "image",
   "column_break_krqq",
   "status",
   "aplication_deadline",
   "jop_location",
   "salary_range",
-  "image",
+  "description_section",
+  "jop_description",
   "list_of_required_section",
   "required_skills",
   "is_published",
@@ -42,6 +43,7 @@
    "in_list_view": 1,
    "label": "Organization Name",
    "options": "Organization",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -76,8 +78,9 @@
    "fieldname": "jop_title",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Jop Title",
-   "reqd": 1
+   "label": "Job Title",
+   "reqd": 1,
+   "unique": 1
   },
   {
    "fieldname": "posting_date",
@@ -90,14 +93,14 @@
    "fieldtype": "Select",
    "in_filter": 1,
    "in_standard_filter": 1,
-   "label": "Jop Type",
+   "label": "Job Type",
    "options": "Full-time\nPart-time\nFreelance",
    "reqd": 1
   },
   {
    "fieldname": "jop_description",
-   "fieldtype": "Text",
-   "label": "Jop Description"
+   "fieldtype": "Small Text",
+   "label": "Job Description"
   },
   {
    "fieldname": "column_break_krqq",
@@ -125,13 +128,14 @@
    "fetch_from": "company_name.location",
    "fieldname": "jop_location",
    "fieldtype": "Data",
-   "label": "Jop Location",
+   "label": "Job Location",
    "reqd": 1
   },
   {
    "fieldname": "salary_range",
    "fieldtype": "Currency",
-   "label": "Salary Range"
+   "label": "Salary Range",
+   "non_negative": 1
   },
   {
    "fieldname": "list_of_required_section",
@@ -149,14 +153,17 @@
    "default": "0",
    "fieldname": "is_published",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Is Published"
   },
   {
    "fieldname": "route",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Route"
   },
   {
+   "default": "Other",
    "fieldname": "job_categories",
    "fieldtype": "Select",
    "label": "Job Categories",
@@ -174,13 +181,18 @@
    "fieldtype": "Data",
    "hidden": 1,
    "label": "Organization image"
+  },
+  {
+   "fieldname": "description_section",
+   "fieldtype": "Section Break",
+   "label": "Description"
   }
  ],
  "has_web_view": 1,
  "index_web_pages_for_search": 1,
  "is_published_field": "is_published",
  "links": [],
- "modified": "2025-03-27 23:20:42.829784",
+ "modified": "2025-04-04 18:10:49.552107",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Job",
