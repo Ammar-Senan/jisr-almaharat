@@ -1,17 +1,17 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{MM}-{DD}-{#####}",
- "creation": "2024-12-29 00:19:12.915141",
+ "creation": "2025-04-05 23:13:52.059019",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "organization_information_section",
   "organization_name",
+  "column_break_jssg",
   "organization_email",
-  "applactopm_information",
+  "applaction_information_section",
   "kind",
-  "column_break_jgap",
+  "column_break_klbe",
   "job_name",
   "training_name",
   "applicant_information_section",
@@ -22,66 +22,18 @@
   "educational_section",
   "degree",
   "major_of_study",
-  "graduation_year",
   "work_experience_section",
   "company_name_that_you_worked_in",
   "your_position_at_work",
-  "attachments_section",
+  "section_break_nh6y",
   "cv",
   "amended_from"
  ],
  "fields": [
   {
-   "fetch_from": "applicant_name.",
-   "fieldname": "email",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Email",
-   "options": "Email",
-   "reqd": 1
-  },
-  {
-   "fetch_from": "applicant_name.phone_number",
-   "fieldname": "phone",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Phone",
-   "options": "User1"
-  },
-  {
-   "fieldname": "cv",
-   "fieldtype": "Attach",
-   "in_list_view": 1,
-   "label": "CV"
-  },
-  {
-   "fieldname": "applactopm_information",
+   "fieldname": "section_break_nh6y",
    "fieldtype": "Section Break",
-   "label": "Applaction Information"
-  },
-  {
-   "fieldname": "column_break_jgap",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "kind",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "label": "Kind",
-   "options": "Job\nTraining",
-   "reqd": 1
-  },
-  {
-   "fieldname": "applicant_information_section",
-   "fieldtype": "Section Break",
-   "label": "Applicant Information"
-  },
-  {
-   "fetch_from": "email.name1",
-   "fieldname": "applicant_name",
-   "fieldtype": "Link",
-   "label": "Applicant Name",
-   "options": "User1"
+   "label": "Attachments"
   },
   {
    "fieldname": "amended_from",
@@ -94,40 +46,70 @@
    "search_index": 1
   },
   {
-   "fieldname": "job_name",
-   "fieldtype": "Link",
-   "label": "Job Name",
-   "options": "Job"
-  },
-  {
-   "fieldname": "training_name",
-   "fieldtype": "Link",
-   "hidden": 1,
-   "label": "Training Name",
-   "options": "Training"
-  },
-  {
    "fieldname": "organization_information_section",
    "fieldtype": "Section Break",
    "label": "Organization Information"
   },
   {
-   "fetch_from": ".organization_name",
    "fieldname": "organization_name",
    "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Organization Name",
-   "options": "Organization"
+   "label": "Organization Name"
   },
   {
-   "fetch_from": ".organization_email",
+   "fieldname": "column_break_jssg",
+   "fieldtype": "Column Break"
+  },
+  {
    "fieldname": "organization_email",
    "fieldtype": "Data",
-   "label": "Organization Email",
-   "options": "Email"
+   "label": "Organization Email"
   },
   {
-   "fetch_from": "applicant_name.address",
+   "fieldname": "applaction_information_section",
+   "fieldtype": "Section Break",
+   "label": "Applaction Information"
+  },
+  {
+   "fieldname": "kind",
+   "fieldtype": "Select",
+   "label": "Kind",
+   "options": "Job\nTraining"
+  },
+  {
+   "fieldname": "column_break_klbe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "job_name",
+   "fieldtype": "Data",
+   "label": "Job Name"
+  },
+  {
+   "fieldname": "training_name",
+   "fieldtype": "Data",
+   "label": "Training Name"
+  },
+  {
+   "fieldname": "applicant_information_section",
+   "fieldtype": "Section Break",
+   "label": "Applicant Information"
+  },
+  {
+   "fieldname": "applicant_name",
+   "fieldtype": "Data",
+   "label": "Applicant Name"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
    "fieldname": "address",
    "fieldtype": "Data",
    "label": "Address"
@@ -149,11 +131,6 @@
    "label": "Major of study"
   },
   {
-   "fieldname": "graduation_year",
-   "fieldtype": "Data",
-   "label": "Graduation year"
-  },
-  {
    "fieldname": "work_experience_section",
    "fieldtype": "Section Break",
    "label": "Work Experience"
@@ -169,19 +146,18 @@
    "label": "Your position at work"
   },
   {
-   "fieldname": "attachments_section",
-   "fieldtype": "Section Break",
-   "label": "Attachments"
+   "fieldname": "cv",
+   "fieldtype": "Attach",
+   "label": "CV"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-03-16 22:32:07.306846",
+ "modified": "2025-04-05 23:21:35.799900",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "Application",
- "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
@@ -193,27 +169,6 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
-   "share": 1,
-   "write": 1
-  },
-  {
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Organization Role",
-   "share": 1
-  },
-  {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "User Role",
    "share": 1,
    "write": 1
   }

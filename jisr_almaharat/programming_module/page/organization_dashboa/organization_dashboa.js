@@ -14,7 +14,7 @@ frappe.pages['organization-dashboa'].on_page_load = function (wrapper) {
 
     $main.html(`
         <div class="dashboard-container" style="display: flex; height: 100vh;">
-            <aside style="width: 260px; background-color:#004080; color: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <aside style="width: 260px; background-color:#004080; color: white; padding: 20px; margin-top: 50px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                 <nav>
                     <ul style="list-style: none; padding: 0;">
                         <li><a href="#" class="menu-item" id="jobs-btn">Jobs</a></li>
@@ -53,6 +53,10 @@ frappe.pages['organization-dashboa'].on_page_load = function (wrapper) {
             "background-color": "red", 
             "border-radius": "8px" });
     }
+    $('.navbar').css({
+        "display": "none"
+    })
+      
 
     // Load organization profile
     const loadoOrganizationProfile = () => {

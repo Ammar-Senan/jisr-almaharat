@@ -19,7 +19,7 @@
  "list_columns": [],
  "login_required": 0,
  "max_attachment_size": 0,
- "modified": "2025-04-05 00:18:33.332301",
+ "modified": "2025-04-05 23:43:52.052343",
  "modified_by": "Administrator",
  "module": "programming module",
  "name": "appling",
@@ -53,7 +53,18 @@
    "label": "Organization Name",
    "max_length": 0,
    "max_value": 0,
-   "options": "Organization",
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
+   "fieldname": "column_break_jssg",
+   "fieldtype": "Column Break",
+   "hidden": 0,
+   "label": "",
+   "max_length": 0,
+   "max_value": 0,
    "read_only": 0,
    "reqd": 0,
    "show_in_filter": 0
@@ -66,14 +77,13 @@
    "label": "Organization Email",
    "max_length": 0,
    "max_value": 0,
-   "options": "Email",
    "read_only": 0,
    "reqd": 0,
    "show_in_filter": 0
   },
   {
    "allow_read_on_all_link_options": 0,
-   "fieldname": "applactopm_information",
+   "fieldname": "applaction_information_section",
    "fieldtype": "Section Break",
    "hidden": 0,
    "label": "Applaction Information",
@@ -93,14 +103,15 @@
    "max_value": 0,
    "options": "Job\nTraining",
    "read_only": 0,
-   "reqd": 1,
+   "reqd": 0,
    "show_in_filter": 0
   },
   {
    "allow_read_on_all_link_options": 0,
-   "fieldname": "column_break_jgap",
+   "fieldname": "column_break_klbe",
    "fieldtype": "Column Break",
    "hidden": 0,
+   "label": "",
    "max_length": 0,
    "max_value": 0,
    "read_only": 0,
@@ -110,12 +121,23 @@
   {
    "allow_read_on_all_link_options": 0,
    "fieldname": "job_name",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "hidden": 0,
    "label": "Job Name",
    "max_length": 0,
    "max_value": 0,
-   "options": "Job",
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
+   "fieldname": "training_name",
+   "fieldtype": "Data",
+   "hidden": 0,
+   "label": "Training Name",
+   "max_length": 0,
+   "max_value": 0,
    "read_only": 0,
    "reqd": 0,
    "show_in_filter": 0
@@ -135,12 +157,11 @@
   {
    "allow_read_on_all_link_options": 0,
    "fieldname": "applicant_name",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "hidden": 0,
    "label": "Applicant Name",
    "max_length": 0,
    "max_value": 0,
-   "options": "User1",
    "read_only": 0,
    "reqd": 0,
    "show_in_filter": 0
@@ -153,7 +174,6 @@
    "label": "Phone",
    "max_length": 0,
    "max_value": 0,
-   "options": "User1",
    "read_only": 0,
    "reqd": 0,
    "show_in_filter": 0
@@ -166,9 +186,8 @@
    "label": "Email",
    "max_length": 0,
    "max_value": 0,
-   "options": "Email",
    "read_only": 0,
-   "reqd": 1,
+   "reqd": 0,
    "show_in_filter": 0
   },
   {
@@ -222,18 +241,6 @@
   },
   {
    "allow_read_on_all_link_options": 0,
-   "fieldname": "graduation_year",
-   "fieldtype": "Int",
-   "hidden": 0,
-   "label": "Graduation year",
-   "max_length": 0,
-   "max_value": 0,
-   "read_only": 0,
-   "reqd": 0,
-   "show_in_filter": 0
-  },
-  {
-   "allow_read_on_all_link_options": 0,
    "fieldname": "work_experience_section",
    "fieldtype": "Section Break",
    "hidden": 0,
@@ -270,7 +277,7 @@
   },
   {
    "allow_read_on_all_link_options": 0,
-   "fieldname": "attachments_section",
+   "fieldname": "section_break_nh6y",
    "fieldtype": "Section Break",
    "hidden": 0,
    "label": "Attachments",

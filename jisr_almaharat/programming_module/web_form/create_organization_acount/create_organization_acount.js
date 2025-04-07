@@ -40,4 +40,5 @@ frappe.ready(function() {
 	// document.querySelector(".flex ").style.backgroundColor = "orange";
 	document.querySelector(".submit-btn").style.backgroundColor = "#000080";
 	document.querySelector(".web-footer").style.display = "none";
+  document.querySelector(".navbar").style.display = "none";
 })

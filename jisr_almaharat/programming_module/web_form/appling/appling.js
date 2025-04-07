@@ -3,10 +3,10 @@ frappe.ready(function() {
 	frappe.web_form.set_value("kind", "{{Job_kind}}");
 
 	if ("{{Job_kind}}" == "Training") {
-		frappe.web_form.set_value("training_name", "{{detail.jop_title }}");
+		frappe.web_form.set_value("training_name", "{{detail.training_title }}");
 
 		// get org info
-		let training =  "{{detail.jop_title }}";
+		let training =  "{{detail.training_title }}";
 		frappe.call({
 			method: 'frappe.client.get_list',
 			args: {
@@ -21,6 +21,7 @@ frappe.ready(function() {
 				if (training.length > 0) {
 					frappe.web_form.set_value('organization_name', training[0].organization_name);
 					frappe.web_form.set_value('organization_email', training[0].organization_email);
+					//frappe.web_form.set_value('training_name', training[0].training_title);
 					
 				}
 
@@ -106,6 +107,7 @@ frappe.ready(function() {
 	// document.querySelector(".flex ").style.backgroundColor = "orange";
 	document.querySelector(".submit-btn").style.backgroundColor = "#000080";
 	document.querySelector(".web-footer").style.display = "none";
+	document.querySelector(".navbar").style.display = "none";
 
 	
 

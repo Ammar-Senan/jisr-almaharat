@@ -97,7 +97,10 @@ frappe.pages['user-dashboard'].on_page_load = function(wrapper) {
             #application {
                 cursor: pointer;
             }
+            .navbar{
+                display: none;
         </style>
+        
 
         <div class="profile-container">
             <h1 class="text-center" id="user-profile-title">User Profiles</h1>
