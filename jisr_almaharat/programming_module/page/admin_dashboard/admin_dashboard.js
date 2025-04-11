@@ -249,7 +249,6 @@ function loadOrganizations() {
             $('#content-section').html(`
                 <div>
                     <h3>Organizations Posted</h3>
-                    <button class="btn btn-primary" id="add-organization-btn">Add New Organization</button>
                     <ul id="organization-list" class="list-group mt-3"></ul>
                 </div>
             `);
@@ -318,7 +317,6 @@ function loadJobs() {
             $('#content-section').html(`
                 <div>
                     <h3>Jobs Posted</h3>
-                    <button class="btn btn-primary" id="add-job-btn">Add New Job</button>
                     <ul id="job-list" class="list-group mt-3"></ul>
                 </div>
             `);
@@ -388,7 +386,6 @@ function loadTrainings(){
             $('#content-section').html(`
                 <div>
                     <h3>Trainings Posted</h3>
-                    <button class="btn btn-primary" id="add-training-btn">Add New Training</button>
                     <ul id="training-list" class="list-group mt-3"></ul>
                 </div>
             `);
@@ -458,7 +455,6 @@ function loadApplications() {
             $('#content-section').html(`
                 <div>
                     <h3>Applications</h3>
-                    <button class="btn btn-primary" id="add-application-btn">Add New Application</button>
                     <ul id="application-list" class="list-group mt-3"></ul>
                 </div>
             `);

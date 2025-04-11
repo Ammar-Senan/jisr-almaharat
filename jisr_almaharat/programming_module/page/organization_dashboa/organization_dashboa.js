@@ -14,7 +14,7 @@ frappe.pages['organization-dashboa'].on_page_load = function (wrapper) {
 
     $main.html(`
         <div class="dashboard-container" style="display: flex; height: 100vh;">
-            <aside style="width: 260px; background-color:#004080; color: white; padding: 20px; margin-top: 50px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <aside style="width: 260px; background-color:#004080; color: white; padding: 20px;  border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                 <nav>
                     <ul style="list-style: none; padding: 0;">
                         <li><a href="#" class="menu-item" id="jobs-btn">Jobs</a></li>
@@ -53,9 +53,9 @@ frappe.pages['organization-dashboa'].on_page_load = function (wrapper) {
             "background-color": "red", 
             "border-radius": "8px" });
     }
-    $('.navbar').css({
-        "display": "none"
-    })
+    // $('.navbar').css({
+    //     "display": "none"
+    // })
       
 
     // Load organization profile
@@ -94,15 +94,6 @@ frappe.pages['organization-dashboa'].on_page_load = function (wrapper) {
             }
         });
     }
-
-        // Load summary cards
-       
-    
-
-//////////////////////////////////////////////////////////////////////
-       
-/////////////////////////////////////////////////////////////////////
- 
 
     // Load jobs section
     $('#jobs-btn').click(function () {
@@ -241,64 +232,96 @@ frappe.pages['organization-dashboa'].on_page_load = function (wrapper) {
     });
 
   // Load applications section
-function loadApplications() {
-    $('#content-section').html('<h3>Loading Applications...</h3>');
-    
+  function loadApplications() {
+    $('#content-section').html('<h3>Loading Opportunities...</h3>');
+
+    // Fetch Jobs
     frappe.call({
         method: 'frappe.client.get_list',
         args: {
-            doctype: 'Application',
-            fields: ['name', 'kind', 'job_name', 'training_name', 'applicant_name', 'creation'],
-            filters: {
-                organization_name: frappe.session.user_fullname // Filter by current organization
-              }
+            doctype: 'Job',
+            fields: ['name', 'jop_title', 'posting_date', 'jop_description', 'creation'],
+            limit_page_length: 50
         },
-        callback: function (response) {
-            let applications = response.message || [];
-            $('#content-section').html(`
-                <div>
-                    <h3>Applications</h3>
-                    <ul id="application-list" class="list-group mt-3"></ul>
-                </div>
-            `);
+        callback: function (jobRes) {
+            let jobs = jobRes.message || [];
 
-            if (applications.length === 0) {
-                $('#application-list').append('<li class="list-group-item text-muted">No applications found.</li>');
-            } else {
-                // to sort applications by creation date 
-                 applications.sort((a, b) => new Date(b.creation) - new Date(a.creation));
-                applications.forEach(app => {
-                    $('#application-list').append(`
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <div>
-                                <strong style="color: #7f8c8d;">${app.kind}</strong>
-                                <p><b>${app.applicant_name}</b> apply for ${app.kind === "Job" ? app.job_name : app.training_name}</p>
-                            </div>
-                            <div>
-                                <button class="btn btn-sm btn-warning edit-application" data-name="${app.name}">Edit</button>
-                                <button class="btn btn-sm btn-danger delete-application" data-name="${app.name}">Delete</button>
-                            </div>
-                        </li>
+            // Fetch Trainings
+            frappe.call({
+                method: 'frappe.client.get_list',
+                args: {
+                    doctype: 'Training',
+                    fields: ['name', 'training_title', 'training_post_date', 'creation'],
+                    limit_page_length: 50
+                },
+                callback: function (trainingRes) {
+                    let trainings = trainingRes.message || [];
+
+                    $('#content-section').html(`
+                        <div style="background-color: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                            <h3 style="color: #2c3e50;">Available Opportunities</h3>
+                            <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;" id="opportunity-cards"></div>
+                        </div>
                     `);
-                });
-            }
 
-         
+                    // Render Jobs
+                    // sort by creation date
+                    jobs.sort((a, b) => new Date(b.creation) - new Date(a.creation));
+                    jobs.forEach(job => {
+                        frappe.call({
+                            method: 'frappe.client.get_count',
+                            args: {
+                                doctype: 'Application',
+                                fields: ['name', 'kind', 'job_name'],
+                                filters: {
+                                    kind: 'Job',
+                                    job_name: job.jop_title
+                                }
+                            },
+                            callback: function (r) {
+                                let count = r.message || 0;
 
-            $('.edit-application').click(function () {
-                frappe.set_route('Form', 'Application', $(this).data('name'));
-            });
+                                $('#opportunity-cards').append(`
+                                    <div id="jobCard" data-title="${job.jop_title}" data-kind="Job" style="flex: 1 1 300px; background-color: #ecf0f1; border-radius: 12px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);  cursor: pointer;">
+                                        <small style="color: #7f8c8d; font-weight: bold">Job</small><br>
+                                        <h4 style="margin-bottom: 10px; color:rgb(23, 120, 185); font-weight: bold">${job.jop_title}</h4>
+                                        <p style="margin: 0; color: #7f8c8d;"><strong>Post date:</strong> ${job.posting_date || 'N/A'}</p>
+                                        <p style="margin-top: 10px; color: #7f8c8d;"><strong>Number of applicants:</strong> ${count}</p>
+                                    </div>
+                                `);
+                            }
+                        });
+                    });
 
-            $('.delete-application').click(function () {
-                let appName = $(this).data('name');
-                frappe.call({
-                    method: 'frappe.client.delete',
-                    args: { doctype: 'Application', name: appName },
-                    callback: function () {
-                        frappe.msgprint('Application deleted successfully.');
-                        loadApplications();
-                    }
-                });
+                    // Render Trainings
+                    // sort by creation date
+                    trainings.sort((a, b) => new Date(b.creation) - new Date(a.creation));
+                    trainings.forEach(training => {
+                        frappe.call({
+                            method: 'frappe.client.get_count',
+                            args: {
+                                doctype: 'Application',
+                                fields: ['name', 'kind', 'training_name'],
+                                filters: {
+                                    kind: 'Training',
+                                    training_name: training.training_title
+                                }
+                            },
+                            callback: function (r) {
+                                let count = r.message || 0;
+
+                                $('#opportunity-cards').append(`
+                                    <div id="jobCard" data-title="${training.training_title}" data-kind="Training" style="flex: 1 1 300px; background-color:rgb(199, 240, 226); border-radius: 12px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;">
+                                        <small style="color: #7f8c8d; font-weight: bold">Training</small><br>
+                                        <h4 style="margin-bottom: 10px; color:rgb(23, 120, 185); font-weight: bold">${training.training_title}</h4>
+                                        <p style="margin: 0; color: #7f8c8d;"><strong>Post date:</strong> ${training.training_post_date || 'N/A'}</p>
+                                        <p style="margin-top: 10px; color: #7f8c8d;"><strong>Number of applicants:</strong> ${count}</p>
+                                    </div>
+                                `);
+                            }
+                        });
+                    });
+                }
             });
         }
     });
@@ -308,6 +331,152 @@ function loadApplications() {
 $('#applications-btn').click(loadApplications);
 $('#applicationCard').click(loadApplications);
 
+//////////////////////////////////  filterApplication   /////////////////////////////////
+
+$('#content-section').on('click', '#jobCard', function () {
+    const jobTitle = $(this).data('title');
+    const jobKind = $(this).data('kind');
+    filterApplication(jobTitle, jobKind);
+});
+
+function filterApplication(title, jobkind) {
+    $('#content-section').html('<h3>Loading Application...</h3>');
+  
+    frappe.call({
+      method: 'frappe.client.get_list',
+      args: {
+        doctype: 'Application',
+        fields: ['name', 'applicant_name', 'kind', 'organization_name', 'job_name', 'training_name', 'address', 'degree', 'major_of_study', 'creation'],
+        filters: {
+          organization_name: frappe.session.user_fullname,
+        }
+      },
+      callback: function (response) {
+        const allApplications = response.message || [];
+  
+        // Filter based on jobkind and title
+        const filteredApplications = allApplications
+          .filter(app => {
+            if (jobkind === "Job") {
+              return app.job_name === title;
+            } else if (jobkind === "Training") {
+              return app.training_name === title;
+            }
+            return false;
+          })
+          .sort((a, b) => new Date(b.creation) - new Date(a.creation)); // Sort by creation date
+  
+        // Display title and container
+        $('#content-section').html(`
+          <div>
+            <h3>${title}</h3>
+            <button id="Filter_btn" class="btn btn-sm btn-danger">Filter</button>
+            <div id="filter-form-container" style="display: none; margin: 15px 0; padding: 15px; background: #f5f5f5; border-radius: 5px;">
+                <h5>Filter Applications</h5>
+                <div class="form-group">
+                    <label for="address-filter">Address</label>
+                    <input type="text" class="form-control" id="address-filter" placeholder="Filter by address">
+                </div>
+                <div class="form-group">
+                    <label for="degree-filter">Degree</label>
+                    <input type="text" class="form-control" id="degree-filter" placeholder="Filter by degree">
+                </div>
+                <div class="form-group">
+                    <label for="major-filter">Major of Study</label>
+                    <input type="text" class="form-control" id="major-filter" placeholder="Filter by major">
+                </div>
+                <button id="apply-filter-btn" class="btn btn-sm btn-primary">Apply Filter</button>
+                <button id="reset-filter-btn" class="btn btn-sm btn-secondary">Reset</button>
+            </div>
+            <ul id="application-list" class="list-group mt-3"></ul>
+          </div>
+        `);
+
+        // Show/hide filter form
+        $('#Filter_btn').click(function() {
+            $('#filter-form-container').toggle();
+        });
+
+        // Function to render applications with optional filters
+        function renderApplications(filters = {}) {
+            $('#application-list').html('');
+            
+            let applicationsToShow = filteredApplications;
+            
+            // Apply filters if provided
+            if (filters.address) {
+                applicationsToShow = applicationsToShow.filter(app => 
+                    app.address && app.address.toLowerCase().includes(filters.address.toLowerCase())
+                );
+            }
+            
+            if (filters.degree) {
+                applicationsToShow = applicationsToShow.filter(app => 
+                    app.degree && app.degree.toLowerCase().includes(filters.degree.toLowerCase())
+                );
+            }
+            
+            if (filters.major) {
+                applicationsToShow = applicationsToShow.filter(app => 
+                    app.major_of_study && app.major_of_study.toLowerCase().includes(filters.major.toLowerCase())
+                );
+            }
+
+            if (applicationsToShow.length === 0) {
+                $('#application-list').append('<li class="list-group-item text-muted">No applications match your criteria.</li>');
+            } else {
+                applicationsToShow.forEach(app => {
+                    $('#application-list').append(`
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>${app.applicant_name}</strong>
+                                <small class="text-muted"> Apply for <b>${app.kind}</b> ${app.kind === "Job" ? app.job_name : app.training_name}</small>
+                                <div style="margin-top: 5px;">
+                                    <small><strong>Address:</strong> ${app.address || 'N/A'}</small><br>
+                                    <small><strong>Degree:</strong> ${app.degree || 'N/A'}</small><br>
+                                    <small><strong>Major:</strong> ${app.major_of_study || 'N/A'}</small>
+                                </div>
+                            </div>
+                            <div>
+                                <button class="btn btn-sm btn-warning review-app" data-name="${app.name}">Review</button>
+                            </div>
+                        </li>
+                    `);
+                });
+            }
+
+            // Attach event handlers
+            $('.review-app').click(function () {
+                const appName = $(this).data('name');
+                frappe.set_route('Form', 'Application', appName);
+            });
+        }
+
+        // Initial render
+        renderApplications();
+
+        // Apply filter button
+        $('#apply-filter-btn').click(function() {
+            const filters = {
+                address: $('#address-filter').val(),
+                degree: $('#degree-filter').val(),
+                major: $('#major-filter').val()
+            };
+            renderApplications(filters);
+        });
+
+        // Reset filter button
+        $('#reset-filter-btn').click(function() {
+            $('#address-filter').val('');
+            $('#degree-filter').val('');
+            $('#major-filter').val('');
+            renderApplications();
+        });
+      }
+    });
+}
+  
+//////////////////////////////  End filterApplication   ////////////////////////////////////
 
 // Load notifications section
    $('#notification-btn').click(function () {
@@ -361,10 +530,7 @@ $('#applicationCard').click(loadApplications);
       });
     }
   });
-//////////////new one /////////////
-console.log(counter)
 });
 
     loadoOrganizationProfile();
-    console.log(n+1);
 };
