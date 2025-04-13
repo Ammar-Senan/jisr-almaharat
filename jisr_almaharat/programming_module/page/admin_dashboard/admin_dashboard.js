@@ -179,8 +179,7 @@ function loadUser1() {
             let users = response.message || [];
             $('#content-section').html(`
                 <div>
-                    <h3>Users Posted</h3>
-                    <button class="btn btn-primary" id="add-user-btn">Add New User</button>
+                    <h3>Users</h3>
                     <ul id="user-list" class="list-group mt-3"></ul>
                 </div>
             `);
@@ -205,9 +204,7 @@ function loadUser1() {
                 });
             }
 
-            $('#add-user-btn').click(function () {
-                window.location.href = '/add-user';
-            });
+           
 
             $('.edit-user').click(function () {
                 let user_name = $(this).data('name');
@@ -248,7 +245,7 @@ function loadOrganizations() {
             let organizations = response.message || [];
             $('#content-section').html(`
                 <div>
-                    <h3>Organizations Posted</h3>
+                    <h3>Organizations</h3>
                     <ul id="organization-list" class="list-group mt-3"></ul>
                 </div>
             `);

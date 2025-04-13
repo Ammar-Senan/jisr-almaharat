@@ -5,7 +5,7 @@
       <img src="/assets/jisr_almaharat/site_assets/img/logo.png" alt="">
       <h1 class="sitename">JISR AL-MHARAT</h1>
     </a>
-    <!-- // change then to be active on click -->
+
     <nav id="navmenu" class="navmenu">
       <ul>
         <li><a href="/Home/index.html">Home</a></li>
@@ -14,23 +14,18 @@
       </ul>
       <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
     </nav>
-    
-    
-    
-    <!-- أزرار تسجيل الدخول والتسجيل -->
+
     <a id="loginBtn" class="btn-getstarted flex-md-shrink-0" href="/login#login">LOGIN</a>
+    <a id="logOutBtn" class="btn-getstarted flex-md-shrink-0" href="#">Log out</a>
     <a id="registerBtn" class="btn-getstarted flex-md-shrink-0" href="/login#signup">Register</a>
 
-    <!-- "Profile" -->
-     <!-- if the user_data.roles = Administrator href change to /app/admin-dashboard and if the user_data.roles =Organization Role the href change to /app/organization-dashboa
-      and if the user_data.roles = User Role the href change to /app/user-dashboard in janja-->
     {% set user_data = user_data %}
     <a class="btn-getstarted flex-md-shrink-0" 
-    href="{% if 'System Manager' in user_data.roles %}/app/admin-dashboard
-      {% elif 'Organization Role' in user_data.roles %}/app/organization-dashboa
-      {% elif 'User Role' in user_data.roles %}/app/user-dashboard
-      {% endif %}"
-    id="profileBtn" style="display: none; ">
+      href="{% if 'System Manager' in user_data.roles %}/app/admin-dashboard
+            {% elif 'Organization Role' in user_data.roles %}/app/organization-dashboa
+            {% elif 'User Role' in user_data.roles %}/app/user-dashboard
+            {% endif %}"
+      id="profileBtn" style="display: none;">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle"
         viewBox="0 0 16 16">
         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
@@ -44,12 +39,23 @@
 </header>
 
 <script>
-  // JavaScript to Fetch Logged-in User
 document.addEventListener("DOMContentLoaded", function () {
     let loginButton = document.getElementById("loginBtn");
     let registerButton = document.getElementById("registerBtn");
-    let ProfileButton = document.getElementById("profileBtn");
+    let profileButton = document.getElementById("profileBtn");
+    let logOutButton = document.getElementById("logOutBtn");
 
+    //  حفظ الرابط الحالي قبل الذهاب لصفحة تسجيل الدخول
+    if (loginButton) {
+        loginButton.addEventListener("click", function () {
+            localStorage.setItem("redirectAfterLogin", window.location.pathname + window.location.hash);
+           
+            
+        });
+      };
+
+
+    //  فحص حالة المستخدم
     fetch('/api/method/frappe.auth.get_logged_user', {
         method: 'GET',
         credentials: 'include'
@@ -59,54 +65,73 @@ document.addEventListener("DOMContentLoaded", function () {
         let loggedInUser = data.message;
 
         if (loggedInUser) {
-            // Hide the "Login" and "Register" button if user is logged in and show the "Profile" button
+            // المستخدم مسجل دخول
             if (loginButton) loginButton.style.display = "none";
             if (registerButton) registerButton.style.display = "none";
-            if (ProfileButton) ProfileButton.style.display = "block";
+            if (profileButton) profileButton.style.display = "block";
+            if (logOutButton) logOutButton.style.display = "block";
+
+            // ✅ إعادة التوجيه بعد تسجيل الدخول
+            const redirectLink = localStorage.getItem("redirectAfterLogin");
+            if (redirectLink) {
+                localStorage.removeItem("redirectAfterLogin");
+                window.location.href = redirectLink;
+            }
+
         } else {
-            // Show the "Login" and "Register" button if user is not logged in and hide the "Profile" button
+            // المستخدم غير مسجل دخول
             if (loginButton) loginButton.style.display = "inline";
             if (registerButton) registerButton.style.display = "block";
-            if (ProfileButton) ProfileButton.style.display = "none";
+            if (profileButton) profileButton.style.display = "none";
+            if (logOutButton) logOutButton.style.display = "none";
         }
     })
     .catch(error => {
         console.error("Error fetching session:", error);
     });
-});
 
+    // ✅ تسجيل الخروج
+    if (logOutButton) {
 
-// to change the active class on click
-document.addEventListener('DOMContentLoaded', function() {
-  const navLinks = document.querySelectorAll('.navmenu ul li a');
+        logOutButton.addEventListener("click", function (e) {
+          
+            e.preventDefault();
+            fetch('/api/method/logout', {
+                method: 'GET',
+                credentials: 'include'
+            })
+            .then(response => {
+                if (response.ok) {
+                    localStorage.removeItem('activeLink');
+                    window.location.href = "/Home/index";
+                } else {
+                    console.error("Logout failed.");
+                }
+            })
+            .catch(error => {
+                console.error("Error during logout:", error);
+            });
+        });
+    }
 
-  // Retrieve the active link from localStorage
-  const activeLink = localStorage.getItem('activeLink');
+    // إدارة الرابط النشط في القائمة
+    const navLinks = document.querySelectorAll('.navmenu ul li a');
+    const activeLink = localStorage.getItem('activeLink');
 
-  // Set the active class based on localStorage
-  if (activeLink) {
+    if (activeLink) {
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === activeLink) {
+                link.classList.add('active');
+            }
+        });
+    }
+
     navLinks.forEach(link => {
-      if (link.getAttribute('href') === activeLink) {
-        link.classList.add('active');
-      }
+        link.addEventListener('click', function () {
+            navLinks.forEach(link => link.classList.remove('active'));
+            this.classList.add('active');
+            localStorage.setItem('activeLink', this.getAttribute('href'));
+        });
     });
-  }
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', function(event) {
-      // Remove the 'active' class from all links
-      navLinks.forEach(link => link.classList.remove('active'));
-
-      // Add the 'active' class to the clicked link
-      this.classList.add('active');
-
-      // Store the active link in localStorage
-      localStorage.setItem('activeLink', this.getAttribute('href'));
-    });
-  });
 });
-//////////////////////////////////////////////
-
-
-
 </script>

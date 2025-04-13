@@ -73,6 +73,10 @@ fixtures = [
 # app_include_css = "/assets/jisr_almaharat/css/jisr_almaharat.css"
 # app_include_js = "/assets/jisr_almaharat/js/jisr_almaharat.js"
 
+# ////////// my cod ////////////////
+# app_include_js = "/assets/jisr_almaharat/site_assets/js/login_redirect.js"
+
+
 # include js, css files in header of web template
 # web_include_css = "/assets/jisr_almaharat/css/jisr_almaharat.css"
 # web_include_js = "/assets/jisr_almaharat/js/jisr_almaharat.js"
@@ -228,9 +232,10 @@ scheduler_events = {
 # Overriding Methods
 # ------------------------------
 #
-# override_whitelisted_methods = {
-# 	"frappe.desk.doctype.event.event.get_events": "jisr_almaharat.event.get_events"
-# }
+override_whitelisted_methods = {
+	# "frappe.desk.doctype.event.event.get_events": "jisr_almaharat.event.get_events"
+    "frappe.desk.page.home.home.login": "jisr_almaharat.utils.custom_login"
+}
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,

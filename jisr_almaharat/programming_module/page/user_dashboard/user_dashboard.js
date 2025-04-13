@@ -208,7 +208,7 @@ frappe.pages['user-dashboard'].on_page_load = function(wrapper) {
             method: 'frappe.client.get_list',
             args: {
                 doctype: 'Application',
-                fields: ['name', 'kind', 'job_name', 'training_name', 'applicant_name', 'workflow_state'],
+                fields: ['name', 'kind', 'job_name', 'training_name', 'applicant_name', 'workflow_state', 'creation'],
                 filters: {
                     applicant_name: frappe.session.user_fullname // Filter by current organization
                   }
@@ -225,7 +225,8 @@ frappe.pages['user-dashboard'].on_page_load = function(wrapper) {
                 if (applications.length === 0) {
                     $('#application-list').append('<li class="list-group-item text-muted">You do not hove any  applications yet.</li>');
                 } else {
-                    applications.reverse().forEach(app => {
+                    applications.sort((a, b) => new Date(b.creation) - new Date(a.creation));
+                    applications.forEach(app => {
                         $('#application-list').append(`
 <li class="list-group-item d-flex justify-content-between align-items-center" id='application' onclick="if('${app.kind}' === 'Job') { location.href='/Home/jobDetails/${app.job_name}'; } else { location.href='/Home/training_details/${app.training_name}'; }">                            <div>
                                 <strong style="color: #7f8c8d;;">${app.kind}</strong>
