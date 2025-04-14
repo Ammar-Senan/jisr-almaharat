@@ -264,8 +264,7 @@ function loadOrganizations() {
                                 <p>${org.about_organization || 'No description available.'}</p>
                             </div>
                             <div>
-                                <button class="btn btn-sm btn-warning edit-organization" data-name="${org.name}">Edit</button>
-                                <button class="btn btn-sm btn-danger delete-organization" data-name="${org.name}">Delete</button>
+                                <button class="btn btn-sm btn-warning review-organization" data-name="${org.name}">Review</button>  
                             </div>
                         </li>
                     `);
@@ -274,21 +273,12 @@ function loadOrganizations() {
 
             $('#add-organization-btn').click(() => window.location.href = '/add-organization');
 
-            $('.edit-organization').click(function () {
-                frappe.set_route('Form', 'Organization', $(this).data('name'));
-            });
 
-            $('.delete-organization').click(function () {
-                let orgName = $(this).data('name');
-                frappe.call({
-                    method: 'frappe.client.delete',
-                    args: { doctype: 'Organization', name: orgName },
-                    callback: function () {
-                        frappe.msgprint('Organization deleted successfully.');
-                        loadOrganizations();
-                    }
-                });
-            });
+            $('.review-organization').click(function () {
+                const orgName = $(this).data('name');
+                frappe.set_route('Form', 'Organization', orgName);
+              });
+            
         }
     });
 }
@@ -468,8 +458,7 @@ function loadApplications() {
                                 <p><b>${app.applicant_name}</b> apply for ${app.kind === "Job" ? app.job_name : app.training_name}</p>
                             </div>
                             <div>
-                                <button class="btn btn-sm btn-warning edit-application" data-name="${app.name}">Edit</button>
-                                <button class="btn btn-sm btn-danger delete-application" data-name="${app.name}">Delete</button>
+                                <button class="btn btn-sm btn-warning review-application" data-name="${app.name}">Review</button>
                             </div>
                         </li>
                     `);
@@ -478,21 +467,11 @@ function loadApplications() {
 
             $('#add-application-btn').click(() => window.location.href = '/add-application');
 
-            $('.edit-application').click(function () {
-                frappe.set_route('Form', 'Application', $(this).data('name'));
-            });
-
-            $('.delete-application').click(function () {
-                let appName = $(this).data('name');
-                frappe.call({
-                    method: 'frappe.client.delete',
-                    args: { doctype: 'Application', name: appName },
-                    callback: function () {
-                        frappe.msgprint('Application deleted successfully.');
-                        loadApplications();
-                    }
-                });
-            });
+            $('.review-application').click(function () {
+                const appName = $(this).data('name');
+                frappe.set_route('Form', 'Application', appName);
+              });
+           
         }
     });
 }
