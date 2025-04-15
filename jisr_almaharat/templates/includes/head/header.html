@@ -1,137 +1,196 @@
 <header id="header" class="header d-flex align-items-center fixed-top">
-  <div class="container-fluid container-xl position-relative d-flex align-items-center">
-
-    <a href="/" class="logo d-flex align-items-center me-auto">
-      <img src="/assets/jisr_almaharat/site_assets/img/logo.png" alt="">
-      <h1 class="sitename">JISR AL-MHARAT</h1>
-    </a>
-
-    <nav id="navmenu" class="navmenu">
-      <ul>
-        <li><a href="/Home/index.html">Home</a></li>
-        <li><a href="/Home/more_job.html">Jobs</a></li>
-        <li><a href="/Home/more_training.html">Trainings</a></li>
-      </ul>
-      <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-    </nav>
-
-    <a id="loginBtn" class="btn-getstarted flex-md-shrink-0" href="/login#login">LOGIN</a>
-    <a id="logOutBtn" class="btn-getstarted flex-md-shrink-0" href="#">Log out</a>
-    <a id="registerBtn" class="btn-getstarted flex-md-shrink-0" href="/login#signup">Register</a>
-
-    {% set user_data = user_data %}
-    <a class="btn-getstarted flex-md-shrink-0" 
-      href="{% if 'System Manager' in user_data.roles %}/app/admin-dashboard
-            {% elif 'Organization Role' in user_data.roles %}/app/organization-dashboa
-            {% elif 'User Role' in user_data.roles %}/app/user-dashboard
-            {% endif %}"
-      id="profileBtn" style="display: none;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle"
-        viewBox="0 0 16 16">
-        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-        <path fill-rule="evenodd"
-          d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-      </svg>
-      <span>Profile</span>
-    </a>
-
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+  
+      <a href="/" class="logo d-flex align-items-center me-auto">
+        <img src="/assets/jisr_almaharat/site_assets/img/logo.png" alt="">
+        <h1 class="sitename">JISR AL-MHARAT</h1>
+      </a>
+  
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="/Home/index.html">Home</a></li>
+          <li><a href="/Home/more_job.html">Jobs</a></li>
+          <li><a href="/Home/more_training.html">Trainings</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+  
+      <a id="loginBtn" class="btn-getstarted flex-md-shrink-0" href="/login#login">LOGIN</a>
+      <a id="logOutBtn" class="btn-getstarted flex-md-shrink-0" href="#">Log out</a>
+      <a id="registerBtn" class="btn-getstarted flex-md-shrink-0" href="/login#signup">Register</a>
+  
+      {% set user_data = user_data %}
+      <a class="btn-getstarted flex-md-shrink-0" 
+        href="{% if 'System Manager' in user_data.roles %}/app/admin-dashboard
+              {% elif 'Organization Role' in user_data.roles %}/app/organization-dashboa
+              {% elif 'User Role' in user_data.roles %}/app/user-dashboard
+              {% else %}#{% endif %}"
+        id="profileBtn" style="display: none;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle"
+          viewBox="0 0 16 16">
+          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+          <path fill-rule="evenodd"
+            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+        </svg>
+        <span>Profile</span>
+      </a>
+  
+    </div>
+  </header>
+  
+  <!-- Approval Pending Modal -->
+  <div id="approvalModal" class="modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
+    <div class="modal-content" style="background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 5px;">
+      <span class="close" style="float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+      <p>Your account is pending approval. Please wait for the administrator to approve your registration.</p>
+    </div>
   </div>
-</header>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    let loginButton = document.getElementById("loginBtn");
-    let registerButton = document.getElementById("registerBtn");
-    let profileButton = document.getElementById("profileBtn");
-    let logOutButton = document.getElementById("logOutBtn");
-
-    //  حفظ الرابط الحالي قبل الذهاب لصفحة تسجيل الدخول
-    if (loginButton) {
-        loginButton.addEventListener("click", function () {
-            localStorage.setItem("redirectAfterLogin", window.location.pathname + window.location.hash);
-           
-            
-        });
-      };
-
-
-    //  فحص حالة المستخدم
-    fetch('/api/method/frappe.auth.get_logged_user', {
-        method: 'GET',
-        credentials: 'include'
-    })
-    .then(response => response.json())
-    .then(data => {
-        let loggedInUser = data.message;
-
-        if (loggedInUser) {
-            // المستخدم مسجل دخول
-            if (loginButton) loginButton.style.display = "none";
-            if (registerButton) registerButton.style.display = "none";
-            if (profileButton) profileButton.style.display = "block";
-            if (logOutButton) logOutButton.style.display = "block";
-
-            // ✅ إعادة التوجيه بعد تسجيل الدخول
-            const redirectLink = localStorage.getItem("redirectAfterLogin");
-            if (redirectLink) {
-                localStorage.removeItem("redirectAfterLogin");
-                window.location.href = redirectLink;
-            }
-
-        } else {
-            // المستخدم غير مسجل دخول
-            if (loginButton) loginButton.style.display = "inline";
-            if (registerButton) registerButton.style.display = "block";
-            if (profileButton) profileButton.style.display = "none";
-            if (logOutButton) logOutButton.style.display = "none";
-        }
-    })
-    .catch(error => {
-        console.error("Error fetching session:", error);
-    });
-
-    // ✅ تسجيل الخروج
-    if (logOutButton) {
-
-        logOutButton.addEventListener("click", function (e) {
-          
-            e.preventDefault();
-            fetch('/api/method/logout', {
-                method: 'GET',
-                credentials: 'include'
-            })
-            .then(response => {
-                if (response.ok) {
-                    localStorage.removeItem('activeLink');
-                    window.location.href = "/Home/index";
-                } else {
-                    console.error("Logout failed.");
-                }
-            })
-            .catch(error => {
-                console.error("Error during logout:", error);
-            });
-        });
-    }
-
-    // إدارة الرابط النشط في القائمة
-    const navLinks = document.querySelectorAll('.navmenu ul li a');
-    const activeLink = localStorage.getItem('activeLink');
-
-    if (activeLink) {
-        navLinks.forEach(link => {
-            if (link.getAttribute('href') === activeLink) {
-                link.classList.add('active');
-            }
-        });
-    }
-
-    navLinks.forEach(link => {
-        link.addEventListener('click', function () {
-            navLinks.forEach(link => link.classList.remove('active'));
-            this.classList.add('active');
-            localStorage.setItem('activeLink', this.getAttribute('href'));
-        });
-    });
-});
-</script>
+  
+  <!-- Logout Confirmation Modal -->
+  <div id="logoutModal" class="modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
+    <div class="modal-content" style="background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 5px;">
+      <p>Are you sure you want to log out?</p>
+      <div style="text-align: right; margin-top: 20px;">
+        <button id="confirmLogout" style="padding: 5px 15px; margin-right: 10px; background-color: #dc3545; color: white; border: none; border-radius: 4px;">Logout</button>
+        <button id="cancelLogout" style="padding: 5px 15px; background-color: #6c757d; color: white; border: none; border-radius: 4px;">Cancel</button>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+      let loginButton = document.getElementById("loginBtn");
+      let registerButton = document.getElementById("registerBtn");
+      let profileButton = document.getElementById("profileBtn");
+      let logOutButton = document.getElementById("logOutBtn");
+      
+      // Modal elements
+      let approvalModal = document.getElementById("approvalModal");
+      let logoutModal = document.getElementById("logoutModal");
+      let closeBtn = document.querySelector("#approvalModal .close");
+      let confirmLogout = document.getElementById("confirmLogout");
+      let cancelLogout = document.getElementById("cancelLogout");
+  
+      // Close approval modal
+      if (closeBtn) {
+          closeBtn.addEventListener("click", function() {
+              approvalModal.style.display = "none";
+          });
+      }
+  
+      // Close modals when clicking outside
+      window.addEventListener("click", function(event) {
+          if (event.target == approvalModal) {
+              approvalModal.style.display = "none";
+          }
+          if (event.target == logoutModal) {
+              logoutModal.style.display = "none";
+          }
+      });
+  
+      // Profile button click handler for users with no role
+      if (profileButton) {
+          profileButton.addEventListener("click", function(e) {
+              if (this.getAttribute("href") === "#") {
+                  e.preventDefault();
+                  approvalModal.style.display = "block";
+              }
+          });
+      }
+  
+      // Logout button click handler
+      if (logOutButton) {
+          logOutButton.addEventListener("click", function(e) {
+              e.preventDefault();
+              logoutModal.style.display = "block";
+          });
+      }
+  
+      // Logout confirmation handlers
+      if (confirmLogout) {
+          confirmLogout.addEventListener("click", function() {
+              logoutModal.style.display = "none";
+              fetch('/api/method/logout', {
+                  method: 'GET',
+                  credentials: 'include'
+              })
+              .then(response => {
+                  if (response.ok) {
+                      localStorage.removeItem('activeLink');
+                      window.location.href = "/Home/index";
+                  } else {
+                      console.error("Logout failed.");
+                  }
+              })
+              .catch(error => {
+                  console.error("Error during logout:", error);
+              });
+          });
+      }
+  
+      if (cancelLogout) {
+          cancelLogout.addEventListener("click", function() {
+              logoutModal.style.display = "none";
+          });
+      }
+  
+      // Check user status
+      fetch('/api/method/frappe.auth.get_logged_user', {
+          method: 'GET',
+          credentials: 'include'
+      })
+      .then(response => response.json())
+      .then(data => {
+          let loggedInUser = data.message;
+  
+          if (loggedInUser) {
+              if (loginButton) loginButton.style.display = "none";
+              if (registerButton) registerButton.style.display = "none";
+              if (profileButton) profileButton.style.display = "block";
+              if (logOutButton) logOutButton.style.display = "block";
+  
+              const redirectLink = localStorage.getItem("redirectAfterLogin");
+              if (redirectLink) {
+                  localStorage.removeItem("redirectAfterLogin");
+                  window.location.href = redirectLink;
+              }
+  
+          } else {
+              if (loginButton) loginButton.style.display = "inline";
+              if (registerButton) registerButton.style.display = "block";
+              if (profileButton) profileButton.style.display = "none";
+              if (logOutButton) logOutButton.style.display = "none";
+          }
+      })
+      .catch(error => {
+          console.error("Error fetching session:", error);
+      });
+  
+      // Save current URL before login
+      if (loginButton) {
+          loginButton.addEventListener("click", function () {
+              localStorage.setItem("redirectAfterLogin", window.location.pathname + window.location.hash);
+          });
+      }
+  
+      // Manage active link in menu
+      const navLinks = document.querySelectorAll('.navmenu ul li a');
+      const activeLink = localStorage.getItem('activeLink');
+  
+      if (activeLink) {
+          navLinks.forEach(link => {
+              if (link.getAttribute('href') === activeLink) {
+                  link.classList.add('active');
+              }
+          });
+      }
+  
+      navLinks.forEach(link => {
+          link.addEventListener('click', function () {
+              navLinks.forEach(link => link.classList.remove('active'));
+              this.classList.add('active');
+              localStorage.setItem('activeLink', this.getAttribute('href'));
+          });
+      });
+  });
+  </script>
