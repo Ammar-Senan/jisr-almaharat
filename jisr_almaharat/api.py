@@ -1,11 +1,137 @@
-import frappe # type: ignore
+from frappe import _
 from frappe.model.document import Document # type: ignore
-    
+from frappe.auth import LoginManager
+from frappe.utils import get_url, now_datetime
+import frappe # type: ignore
+
+from frappe import whitelist
+import frappe
+
+# @frappe.whitelist(allow_guest=True)  # Require authentication
+# def create_application(
+#     organization_name,
+#     organization_email,
+#     kind,
+#     job_name,
+#     applicant_name,
+#     email
+# ):
+#     try:
+#         # Check permissions
+#         if not frappe.has_permission("Application", "create"):
+#             frappe.throw("Insufficient permissions", frappe.PermissionError)
+
+#         # Create new document
+#         doc = frappe.new_doc("Application")
+#         doc.update({
+#             "organization_name": organization_name,
+#             "organization_email": organization_email,
+#             "kind": kind,
+#             "job_name": job_name,
+#             "applicant_name": applicant_name,
+#             "email": email
+#         })
+        
+#         # Insert document
+#         doc.insert(ignore_permissions=True)  # Enforce permissions
+#         frappe.db.commit()  # Save to database
+
+#         return {
+#             "success": True,
+#             "message": "Application created successfully",
+#             "name": doc.name  # Return the created document ID
+#         }
+
+#     except Exception as e:
+#         frappe.log_error(frappe.get_traceback(), "Application Creation Failed")
+#         return {
+#             "success": False,
+#             "message": str(e)
+#         }
+
+@frappe.whitelist(allow_guest=True)    
+def allApplication(email):
+    jobs = frappe.get_all("Application", 
+      filters={"email":email},               
+      fields=['name', 'kind', 'job_name', 'email', 'training_name', 'applicant_name', 'workflow_state'], )             
+    return  jobs
+
+
+@whitelist(allow_guest=True)
+def new_apply(organization_name, organization_email, kind, job_name, applicant_name, email,phone):
+    try:    
+        apply = frappe.new_doc("Application")
+        apply.organization_name = organization_name
+        apply.organization_email = organization_email
+        apply.kind = kind
+        apply.job_name = job_name
+        apply.applicant_name = applicant_name
+        apply.email = email
+        apply.phone = phone
+       
+        apply.insert(ignore_permissions=True)   
+        frappe.db.commit()
+        
+        return True
+    except Exception as e:
+        return False
+
+
+
+
+
+
+@frappe.whitelist( allow_guest=True )
+def login(usr, pwd):
+    try:
+        login_manager = frappe.auth.LoginManager()
+        login_manager.authenticate(user=usr, pwd=pwd)
+        login_manager.post_login()
+    except frappe.exceptions.AuthenticationError:
+        frappe.clear_messages()
+        frappe.local.response["message"] = {
+            "success_key":0,
+            "message":"Authentication Error!"
+        }
+
+        return
+
+    api_generate = generate_keys(frappe.session.user)
+    user = frappe.get_doc('User', frappe.session.user)
+
+    frappe.response["message"] = {
+        "success_key":1,
+        "message":"Authentication success",
+        "sid":frappe.session.sid,
+        "api_key":user.api_key,
+        "api_secret":api_generate,
+        "username":user.username,
+        "Full_Name":user.full_name,
+        "email":user.email,
+        "roles": [r.role for r in user.roles],
+    }
+
+def generate_keys(user):
+    user_details = frappe.get_doc('User', user)
+    api_secret = frappe.generate_hash(length=15)
+
+    if not user_details.api_key:
+        api_key = frappe.generate_hash(length=15)
+        user_details.api_key = api_key
+
+    user_details.api_secret = api_secret
+    user_details.save()
+
+    return api_secret
+
+
+
+
 @frappe.whitelist(allow_guest=True)    
 def alljob():
     jobs = frappe.get_all("Job", 
             fields=["name", "jop_title", "aplication_deadline", 
-                "organization_name", "jop_type","jop_description", "image"])  # Include image field
+                "organization_name", "organization_email","jop_type","jop_description", "image"])  # Include image field
             
         # Convert relative image paths to full URLs
     for job in jobs:
@@ -15,27 +141,22 @@ def alljob():
     return  jobs
 
 
+
 @frappe.whitelist(allow_guest=True)
 def getTrainingInfo():
-    # print=("\n\n\n\n\nfrappe.form_dict.docname\n\n\n")
-    # Job_info=frappe.get_all("Training", fields=["name", "training_title", "aplication_deadline", "organization_name",
-    #             "training_pattren", "about_training", "training_post_date",
-    #              "training_status", "creation"])
-    # # job =  frappe.get_all("Job")
-    # # job  = frappe.get_doc("Books",frappe.form_dict.docname)
-    # return Job_info
-    jobs = frappe.get_all("Training", 
+ 
+    Training = frappe.get_all("Training", 
            fields=["name", "training_title", "aplication_deadline", "organization_name",
                 "training_pattren", "about_training", "training_post_date",
                  "training_status", "creation","image"])
     #  # Include image field
             
         # Convert relative image paths to full URLs
-    for job in jobs:
-            if job.get("image"):
-                job["image"] = frappe.utils.get_url(job["image"])
+    for Trainin in Training:
+            if Trainin.get("image"):
+                Trainin["image"] = frappe.utils.get_url(Trainin["image"])
                 
-    return  jobs
+    return  Training
 
 
 @frappe.whitelist()  # Allow this function to be accessed via API
@@ -50,7 +171,7 @@ def assign_role(email, user_type):
     # Role mapping based on selected user type
     role_map = {
         "Regular User": "User Role",
-        "Company": "No Role"
+        "Company": "Organization Role"
     }
 
     role_name = role_map.get(user_type)
@@ -77,55 +198,3 @@ def assign_role(email, user_type):
 
     return f"Role  has been assigned based on user type : {user_type}."
     
-# @frappe.whitelist()  
-# def get_context(job_id=None):
-#     try:
-#         if not job_id:
-#             job_id = frappe.form_dict.docname
-
-#         job = frappe.get_doc("Job", job_id)
-#         # print(f"\n\n\n\n\n\n{job.book_name}\n\n\n\n\n")
-#         return {
-#             "status": "success",
-#             "data": {
-#                 "jop_title": job.jop_title,  
-#                 # "jop_title": job.jop_title,
-                
-#             }
-#         }
-#     except Exception as e:
-#         return {
-#             "status": "error",
-#             "message": str(e)
-#         }
-
-
-    # get data from job to show in form applicnd
-# @frappe.whitelist(allow_guest=True)    
-# def get_context(job_id):
-#     print=("\n\n\n\n\nfrappe.form_dict.docname\n\n\n")
-#     job =  frappe.get_doc("Books",job_id)
-#     # job  = frappe.get_doc("Books",frappe.form_dict.docname)
-#     return {
-#         'book_name': job.book_name, 
-#         'au_name': job.book_name    
-#     }
-
-
-# @frappe.whitelist(allow_guest=True)  
-# def get_context(context):
-#     try:
-#        context.applicand_detail = frappe.get_doc("Books",frappe.form_dict.docname)
-#        print(f"\n\n\n\n\n\n{context.applicand_detail}\n\n\n\n\n")
-#        print(f"\n\n\n\n\n\n{context.applicand_detail.book_name}\n\n\n\n\n")
-#        print(f"\n\n\n\n\n\n{context.applicand_detail.au_name}\n\n\n\n\n")
-#     except Exception as e:   
-#        frappe.local.flags.redirect_location ='/404'
-#        raise frappe.Redirect   
-    
-#     return {
-#         'book_name': context.applicand_detail.book_name, 
-#         'au_name': context.applicand_detail.au_name    
-#     }
-
-   
